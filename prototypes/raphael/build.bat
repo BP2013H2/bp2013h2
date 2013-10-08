@@ -1,0 +1,1 @@
+coffee --compile --watch --map --output js src
