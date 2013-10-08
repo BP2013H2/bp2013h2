@@ -12,3 +12,4 @@ Repository for the bachelor project 2013H2 at HPI, Potsdam
 ## Run
 
 - simply run ```cake build``` which will automatically watch and compile the .coffee files
+- ...
