@@ -22,61 +22,32 @@ require(["jquery", "d3.v3"],  ->
 
     diff = scale*(h - w)
 
-    # debugger
-    # translate
     offsetMap = (offset - radius/Math.sqrt(2)) / magicIncreasement
     map.attr("transform",
       "translate(#{offsetMap + diff/2}, #{offsetMap})
        scale(#{scale}, #{scale})")
 
-  lineMouseover = (data, index, indirect) ->
+  genericMouseHandler = (evt, elementType) ->
 
-    line = d3.select("#line_#{index}")
-    line.transition()
-        .duration(duration)
-        .attr("height", increasedHeight)
-
-    unless indirect
-      # cut "line_" away
-      id = line.attr("id").slice(5)
-      countyMouseover(null, id, true)
-
-  lineMouseout = (data, index, indirect) ->
-
-    line = d3.select("#line_#{index}")
-    line
-      .transition()
-        .delay(duration/2)
-        .duration(duration)
-        .attr("height", data * height / 100)
-
-    unless indirect
-      id = line.attr("id").slice(5)
-      countyMouseout(null, id, true)
-
-
-  countyMouseover = (data, index, indirect) ->
-    county = d3.select("#county_#{index}")
-    county.transition()
-        .duration(duration/2)
-        .attr("fill", "blue")
-
-    unless indirect
-      id = county.attr("id").slice(7)
-      lineMouseover(d3.select("#line_#{id}").data(), id, true)
-
-  countyMouseout = (data, index, indirect) ->
-    county = d3.select("#county_#{index}")
-    county.transition()
-        .duration(duration)
-        .attr("fill", "white")
-
-    unless indirect
-      id = county.attr("id").slice(7)
-      lineMouseout(d3.select("#line_#{id}").data(), id, true)
-
-  genericMouseHandler = ->
     return (data, index, indirect) ->
+      svgElement = d3.select("##{elementType}_#{index}")
+
+      if elementType == "line"
+        attribute = {"height" : if evt == "over" then increasedHeight else data * height / 100 }
+      else
+        attribute = {"fill" :  if evt == "over" then "blue" else "white" }
+
+      svgElement.transition()
+        .delay(if evt + elementType == "outline" then duration/2 else 0)
+        .duration(duration)
+        .attr(attribute)
+
+      unless indirect
+        id = svgElement.attr("id").slice(elementType.length + 1)
+        otherElementType = if elementType == "line" then "county" else "line"
+
+        genericMouseHandler(evt, otherElementType)(d3.select("##{otherElementType}_#{id}").data(), id, true)
+
 
   getDataset = ->
     
@@ -108,12 +79,14 @@ require(["jquery", "d3.v3"],  ->
         return "translate( #{marginRight}, #{marginTop} )   rotate(#{angleDegree})"
       )
       .attr("id", (d, i) -> return "line_" + i)
-      .on("mouseover", lineMouseover)
-      .on("mouseout", lineMouseout)
+      .on("mouseover", genericMouseHandler("over", "line"))
+      .on("mouseout", genericMouseHandler("out", "line"))
 
   addCountyMouseEvents = (dataset) ->
 
-    d3.selectAll("path").data(dataset).on("mousemove", countyMouseover).on("mouseout", countyMouseout)
+    d3.selectAll("path").data(dataset)
+      .on("mousemove", genericMouseHandler("over", "county"))
+      .on("mouseout", genericMouseHandler("out", "county"))
 
   setUp = ->
 
