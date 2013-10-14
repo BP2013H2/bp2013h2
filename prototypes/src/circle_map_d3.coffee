@@ -12,41 +12,6 @@ require(["jquery", "d3.v3"],  ->
   radius = 250
   offset = radius + increasedHeight
 
-  lineMouseover = (id, indirect) ->
-
-    if id
-      line = d3.select("#{id}")
-    else
-      line = d3.select(this)
-
-    line.transition()
-        .duration(duration)
-        .attr("height", increasedHeight)
-
-
-    unless indirect
-      # cut "line_" away
-      id = line.attr("id").slice(5)
-
-      countyMouseover("path_#{id}", true)
-
-  lineMouseout = (id, indirect) ->
-
-    if id
-      line = d3.select("#{id}")
-    else
-      line = d3.select(this)
-
-    line
-      .transition()
-        .delay(duration/2)
-        .duration(duration)
-        .attr("height", height)
-
-    unless indirect
-      id = line.attr("id").slice(5)
-      countyMouseout("path_#{id}", true)
-
   fitMapToCircle = ->
     map = d3.select("#map")
     mapBB = map[0][0].getBBox()
@@ -64,69 +29,97 @@ require(["jquery", "d3.v3"],  ->
       "translate(#{offsetMap + diff/2}, #{offsetMap})
        scale(#{scale}, #{scale})")
 
-  countyMouseover = (id, indirect) ->
-    if id
-      county = d3.select("##{id}")
-    else
-      county = d3.select(this)
+  lineMouseover = (data, index, indirect) ->
 
+    line = d3.select("#line_#{index}")
+    line.transition()
+        .duration(duration)
+        .attr("height", increasedHeight)
+
+    unless indirect
+      # cut "line_" away
+      id = line.attr("id").slice(5)
+      countyMouseover(null, id, true)
+
+  lineMouseout = (data, index, indirect) ->
+
+    line = d3.select("#line_#{index}")
+    line
+      .transition()
+        .delay(duration/2)
+        .duration(duration)
+        .attr("height", data * height / 100)
+
+    unless indirect
+      id = line.attr("id").slice(5)
+      countyMouseout(null, id, true)
+
+
+  countyMouseover = (data, index, indirect) ->
+    county = d3.select("#county_#{index}")
     county.transition()
         .duration(duration/2)
         .attr("fill", "blue")
 
     unless indirect
-      id = county.attr("id").slice(5)
-      lineMouseover("#line_#{id}", true)
+      id = county.attr("id").slice(7)
+      lineMouseover(d3.select("#line_#{id}").data(), id, true)
 
-  countyMouseout = (id, indirect) ->
-    if id
-      county = d3.select("##{id}")
-    else
-      county = d3.select(this)
-
+  countyMouseout = (data, index, indirect) ->
+    county = d3.select("#county_#{index}")
     county.transition()
         .duration(duration)
         .attr("fill", "white")
 
     unless indirect
-      id = county.attr("id").slice(5)
-      lineMouseout("#line_#{id}", true)
+      id = county.attr("id").slice(7)
+      lineMouseout(d3.select("#line_#{id}").data(), id, true)
 
+  genericMouseHandler = ->
+    return (data, index, indirect) ->
 
-  drawLines = ->
-    # Make an SVG Container
-    svgContainer = d3.select("svg").append("g") #.attr("width", width).attr("height", height)
-
+  getDataset = ->
+    
+    dataset = []
     for i in [0...amount]
+      dataset.push(Math.random() * 100)
 
-      # Draw the Rectangle
-      angleRad = i * 2 * Math.PI / amount
-      angleDegree = i * 360 / amount
+    dataset.sort( (a, b) -> a - b )
+    return dataset
 
-      marginTop = Math.cos(angleRad) * radius + offset
-      marginRight = - Math.sin(angleRad) * radius + offset
-      rectangle = svgContainer.
-        append("rect").
-        attr("width", width).
-        attr("height", height - 30*i/amount).
-        attr("fill", "black").
-        attr("transform",
-            "translate(#{marginRight}, #{marginTop}) rotate(#{angleDegree})"
-        ).
-        on("mouseover", lineMouseover).
-        on("mouseout", lineMouseout)
+  
+  drawLines = (dataset) ->
 
-    d3.selectAll("rect").attr("id", (d, i) -> return "line_" + i)
+    d3.select("svg").append("g")
+      .selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      .attr("width", width)
+      .attr("height", (d, i) -> d * height / 100)
+      .attr("fill", "black")
+      .attr("transform", (d, i) ->
+        angleRad = i * 2 * Math.PI / amount
+        angleDegree = i * 360 / amount
 
-  addCountyMouseEvents = ->
+        marginTop = Math.cos(angleRad) * radius + offset
+        marginRight = - Math.sin(angleRad) * radius + offset
 
-    d3.selectAll("path").each( ->
-      d3.select(this).on("mousemove", countyMouseover).on("mouseout", countyMouseout)
-    )
+        return "translate( #{marginRight}, #{marginTop} )   rotate(#{angleDegree})"
+      )
+      .attr("id", (d, i) -> return "line_" + i)
+      .on("mouseover", lineMouseover)
+      .on("mouseout", lineMouseout)
+
+  addCountyMouseEvents = (dataset) ->
+
+    d3.selectAll("path").data(dataset).on("mousemove", countyMouseover).on("mouseout", countyMouseout)
 
   setUp = ->
-    drawLines()
-    addCountyMouseEvents()
+
+    dataset = getDataset()
+    drawLines(dataset)
+    addCountyMouseEvents(dataset)
 
     fitMapToCircle()
 
