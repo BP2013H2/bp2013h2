@@ -4,13 +4,13 @@ require.config(
 
 require(["jquery", "d3.v3"],  ->
   
-  duration = 250
-  amount = 299
-  width = 3
-  height = 100
-  increasedHeight = 150
-  radius = 250
-  offset = radius + increasedHeight
+  DURATION = 250
+  AMOUNT = 299
+  WIDTH = 3
+  HEIGHT = 100
+  INCREASEDHEIGHT = 150
+  RADIUS = 250
+  OFFSET = RADIUS + INCREASEDHEIGHT
 
   fitMapToCircle = ->
     map = d3.select("#map")
@@ -18,11 +18,11 @@ require(["jquery", "d3.v3"],  ->
     h = mapBB.height
     w = mapBB.width
     magicIncreasement = 1.25
-    scale = magicIncreasement * Math.sqrt(2)*radius / h
+    scale = magicIncreasement * Math.sqrt(2)*RADIUS / h
 
     diff = scale*(h - w)
 
-    offsetMap = (offset - radius/Math.sqrt(2)) / magicIncreasement
+    offsetMap = (OFFSET - RADIUS/Math.sqrt(2)) / magicIncreasement
     map.attr("transform",
       "translate(#{offsetMap + diff/2}, #{offsetMap})
        scale(#{scale}, #{scale})")
@@ -33,13 +33,13 @@ require(["jquery", "d3.v3"],  ->
       svgElement = d3.select("##{elementType}_#{index}")
 
       if elementType == "line"
-        attribute = {"height" : if evt == "over" then increasedHeight else data * height / 100 }
+        attribute = {"height" : if evt == "over" then INCREASEDHEIGHT else data * HEIGHT / 100 }
       else
         attribute = {"fill" :  if evt == "over" then "blue" else "white" }
 
       svgElement.transition()
-        .delay(if evt + elementType == "outline" then duration/2 else 0)
-        .duration(duration)
+        .delay(if evt + elementType == "outline" then DURATION/2 else 0)
+        .duration(DURATION)
         .attr(attribute)
 
       unless indirect
@@ -52,11 +52,12 @@ require(["jquery", "d3.v3"],  ->
   getDataset = ->
     
     dataset = []
-    for i in [0...amount]
+    for i in [0...AMOUNT]
       dataset.push(Math.random() * 100)
 
     dataset.sort( (a, b) -> a - b )
     return dataset
+
 
   
   drawLines = (dataset) ->
@@ -66,15 +67,15 @@ require(["jquery", "d3.v3"],  ->
       .data(dataset)
       .enter()
       .append("rect")
-      .attr("width", width)
-      .attr("height", (d, i) -> d * height / 100)
+      .attr("width", WIDTH)
+      .attr("height", (d, i) -> d * HEIGHT / 100)
       .attr("fill", "black")
       .attr("transform", (d, i) ->
-        angleRad = i * 2 * Math.PI / amount
-        angleDegree = i * 360 / amount
+        angleRad = i * 2 * Math.PI / AMOUNT
+        angleDegree = i * 360 / AMOUNT
 
-        marginTop = Math.cos(angleRad) * radius + offset
-        marginRight = - Math.sin(angleRad) * radius + offset
+        marginTop = Math.cos(angleRad) * RADIUS + OFFSET
+        marginRight = - Math.sin(angleRad) * RADIUS + OFFSET
 
         return "translate( #{marginRight}, #{marginTop} )   rotate(#{angleDegree})"
       )
