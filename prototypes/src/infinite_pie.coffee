@@ -4,15 +4,25 @@ require.config(
 
 require(["jquery", "d3.v3"],  ->
 
+  
+  getColor = d3.scale.category20c()
+  colorIndex = 0
+
   class Category
+
+    WIDTH: 100
+    HEIGHT: 50
+    MARGIN: 25
 
     constructor: () ->
 
       @drawSquare()
 
-    drawSquare: ->
 
-      data2 = [{"label":"Wahlenscheidung"},
+    drawSquare: ->
+  
+
+      data = [{"label":"Wahlenscheidung"},
               {"label":"Ost/West"},
               {"label":"Alter"},
               {"label":"Tätigkeit"},
@@ -21,47 +31,69 @@ require(["jquery", "d3.v3"],  ->
               {"label":"Schulabschluss"},
               {"label":"Haushaltseinkommen"}]
 
+
+      for d, i in data
+        d.position =
+          x: i * (@WIDTH + @MARGIN)
+          y: @HEIGHT
+
       rects = d3.select("svg").append("g")
         .selectAll("rect")
-        .data(data2)
+        .data(data)
         .enter()
         .append("rect")
+        .attr("width", @WIDTH)
+        .attr("height", @HEIGHT)
+        .attr("x", (d, i) -> d.position.x )
+        .attr("y", (d, i) -> d.position.y )
+        .attr("fill", (d, i) -> getColor(i))
+        .call(d3.behavior.drag().on("drag", drag).on("dragend", dragend))
 
-      rects
-        .append("svg:text")        
-        .attr("width", 100)
-        .attr("height", 300 )
-        .text((d, i) => data2[i].label)
 
-     #
+    drag = ->
+
+      dragTarget = d3.select(this)
+      dragTarget
+        .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
+        .attr("y", -> d3.event.dy + +dragTarget.attr("y"))
+                
+
+    dragend = ->
+
+      dragTarget = d3.select(this)
+      dragTarget
+        .attr("x", (d, i) -> d.position.x)
+        .attr("y", (d, i) -> d.position.y)
+
+        
+      
+
+
 
   class InfinitePie
 
     WIDTH: 50
 
-    constructor: (@inner_radius, @outer_radius) ->
+    constructor: (@innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
       
       @drawPie()
 
 
     drawPie: ->
 
-      getColor = d3.scale.category20c()
-
-      data = [{"label":"one", "value":20},
+      @data = [{"label":"one", "value":20},
                {"label":"two", "value":50},
                {"label":"three", "value":30}]
 
 
-      pie = d3.layout.pie().value( (d) -> d.value ).endAngle(Math.PI)
-      arc = d3.svg.arc().outerRadius(@outer_radius).innerRadius(@inner_radius)
+      pie = d3.layout.pie().value( (d) -> d.value ).startAngle(@startAngle).endAngle(@endAngle)
+      arc = d3.svg.arc().outerRadius(@outerRadius).innerRadius(@innerRadius)
 
-      arcContainer = d3.select("svg")
+      @arcContainer = pieContainer
         .append("g")
-        .data([data])
-        .attr("transform", "translate(" + @outer_radius + "," + @outer_radius + ")")
+        .data([@data])
 
-      arcs = arcContainer
+      arcs = @arcContainer
               .selectAll("g.slice")
               .data(pie)
               .enter()
@@ -70,7 +102,7 @@ require(["jquery", "d3.v3"],  ->
 
       arcs.append("path")
           .attr("d", arc)
-          .attr("fill", (d, i) => getColor(i))
+          .attr("fill", (d, i) -> getColor(colorIndex++))
 
 
       # captions doesn't work?
@@ -87,15 +119,97 @@ require(["jquery", "d3.v3"],  ->
     stackPie: ->
 
       
-      data = [{"label":"one", "value":20},
-               {"label":"two", "value":50},
-               {"label":"three", "value":30}]
+      # @data = [{"label":"one", "value":20},
+      #          {"label":"two", "value":50},
+      #          {"label":"three", "value":30}]
 
-      new InfinitePie(@outer_radius, @outer_radius + @WIDTH)
+      slices = @arcContainer.selectAll("g.slice")
+      data = slices.data()
 
+      pies = []
+
+      slices.each( (d, i) => 
+        
+        startAngle = d.startAngle
+        endAngle = d.endAngle
+        newPie = new InfinitePie(@outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
+        pies.push(newPie)
+      )
+
+      pieCollection = new PieCollection(pies)
+      return pieCollection
+
+    getBiggestRadius: ->
+
+      return @outerRadius
+
+ 
+  class PieCollection
+
+    constructor : (@pies) ->
+
+    stackPie : ->
+
+      newPies = []
+
+      for eachPie in @pies
+          newPies.push(eachPie.stackPie())
+
+      pieCollection = new PieCollection(newPies)
+      return pieCollection
+
+    getBiggestRadius: ->
+
+      biggestRadius = 0
+
+      for eachPie in @pies
+        biggestRadius = Math.max(biggestRadius, eachPie.getBiggestRadius())
+
+      return biggestRadius
+
+
+  pieContainer = d3.select("svg").append("g")
+    
 
   pie = new InfinitePie(50, 100)
-  pie.stackPie()
+  pieCollection = pie.stackPie()#.stackPie().stackPie().stackPie()
+
+  biggestRadius = pieCollection.getBiggestRadius()
+
+  marginTop = 150
+  
+  window.pieCollection = pieCollection
+
+  pieContainer.attr("transform", "translate(#{biggestRadius}, #{biggestRadius + marginTop})")
+
+  HEIGHT = 500
+
+
+  zoomed = ->
+    # pieContainer.translate(d3.event.translate).scale(d3.event.scale);
+
+    console.log "d3.event.translate", d3.event.translate
+    console.log "d3.event.scale", d3.event.scale
+
+    # g.selectAll("path").attr("d", path);
+
+
+  # zoom = d3.behavior.zoom()
+  #   # .translate([100, 100] )
+  #   # .scale(-> console.log "scale", arguments )
+  #   # .scaleExtent(-> console.log "scaleExtent", arguments )
+  #   .on("zoom", zoomed)
+
+  # # pieContainer.call(zoom, zoomed)
+  # pieContainer.call(d3.behavior.zoom().on("zoom"), zoomed);
+
+    # .translate(pieContainer.translate())
+    # .scale(pieContainer.scale())
+    # .scaleExtent([HEIGHT, 8 * HEIGHT])
+    # .on("zoom", zoomed);
+
   c = new Category()
+
+
 
 )
