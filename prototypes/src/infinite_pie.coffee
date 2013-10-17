@@ -4,6 +4,37 @@ require.config(
 
 require(["jquery", "d3.v3"],  ->
 
+  class Category
+
+    constructor: () ->
+
+      @drawSquare()
+
+    drawSquare: ->
+
+      data2 = [{"label":"Wahlenscheidung"},
+              {"label":"Ost/West"},
+              {"label":"Alter"},
+              {"label":"Tätigkeit"},
+              {"label":"Geschlecht"},
+              {"label":"Beruf"},
+              {"label":"Schulabschluss"},
+              {"label":"Haushaltseinkommen"}]
+
+      rects = d3.select("svg").append("g")
+        .selectAll("rect")
+        .data(data2)
+        .enter()
+        .append("rect")
+
+      rects
+        .append("svg:text")        
+        .attr("width", 100)
+        .attr("height", 300 )
+        .text((d, i) => data2[i].label)
+
+     #
+
   class InfinitePie
 
     WIDTH: 50
@@ -65,5 +96,6 @@ require(["jquery", "d3.v3"],  ->
 
   pie = new InfinitePie(50, 100)
   pie.stackPie()
+  c = new Category()
 
 )
