@@ -4,17 +4,23 @@ require.config(
 
 require(["jquery", "d3.v3"],  ->
 
+  
+  getColor = d3.scale.category20c()
+  colorIndex = 0
+
   class Category
+
+    WIDTH: 100
+    HEIGHT: 50
+    MARGIN: 25
 
     constructor: () ->
 
       @drawSquare()
 
+
     drawSquare: ->
   
-      WIDTH = 100
-      HEIGHT = 50
-      MARGIN = 25
 
       data = [{"label":"Wahlenscheidung"},
               {"label":"Ost/West"},
@@ -25,31 +31,44 @@ require(["jquery", "d3.v3"],  ->
               {"label":"Schulabschluss"},
               {"label":"Haushaltseinkommen"}]
 
-      getColor = d3.scale.category20c()
+
+      for d, i in data
+        d.position =
+          x: i * (@WIDTH + @MARGIN)
+          y: @HEIGHT
 
       rects = d3.select("svg").append("g")
         .selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
-        .attr("width", WIDTH)
-        .attr("height", HEIGHT)
-        .attr("transform", (d, i) -> "translate(" + (i * (WIDTH + MARGIN)) + ", " + HEIGHT + " )")
-        .attr("fill", (d, i) => getColor(i))
+        .attr("width", @WIDTH)
+        .attr("height", @HEIGHT)
+        .attr("x", (d, i) -> d.position.x )
+        .attr("y", (d, i) -> d.position.y )
+        .attr("fill", (d, i) -> getColor(i))
+        .call(d3.behavior.drag().on("drag", drag).on("dragend", dragend))
+
+
+    drag = ->
+
+      dragTarget = d3.select(this)
+      dragTarget
+        .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
+        .attr("y", -> d3.event.dy + +dragTarget.attr("y"))
+                
+
+    dragend = ->
+
+      dragTarget = d3.select(this)
+      dragTarget
+        .attr("x", (d, i) -> d.position.x)
+        .attr("y", (d, i) -> d.position.y)
 
         
-      d3.select("svg").append("svg:circle")
-        .attr("r",50)
-        .attr("cx",100)
-        .attr("cy",100)
-        .call(d3.behavior.drag().on("drag", move))
+      
 
-    move = ->
-      @parentNode.appendChild this
-      dragTarget = d3.select(this)
-      dragTarget.attr("cx", -> d3.event.dx + parseInt(dragTarget.attr("cx")))
-                .attr "cy", -> d3.event.dy + parseInt(dragTarget.attr("cy"))
-  
+
 
   class InfinitePie
 
@@ -61,8 +80,6 @@ require(["jquery", "d3.v3"],  ->
 
 
     drawPie: ->
-
-      getColor = d3.scale.category20c()
 
       @data = [{"label":"one", "value":20},
                {"label":"two", "value":50},
@@ -85,7 +102,7 @@ require(["jquery", "d3.v3"],  ->
 
       arcs.append("path")
           .attr("d", arc)
-          .attr("fill", (d, i) -> getColor(i))
+          .attr("fill", (d, i) -> getColor(colorIndex++))
 
 
       # captions doesn't work?
@@ -155,12 +172,13 @@ require(["jquery", "d3.v3"],  ->
     
 
   pie = new InfinitePie(50, 100)
-  pieCollection = pie.stackPie().stackPie().stackPie().stackPie()
+  pieCollection = pie.stackPie()#.stackPie().stackPie().stackPie()
 
   biggestRadius = pieCollection.getBiggestRadius()
 
   marginTop = 150
   
+  window.pieCollection = pieCollection
 
   pieContainer.attr("transform", "translate(#{biggestRadius}, #{biggestRadius + marginTop})")
 
