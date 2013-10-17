@@ -11,7 +11,7 @@ require(["jquery", "d3.v3"],  ->
       @drawSquare()
 
     drawSquare: ->
-
+  
       WIDTH = 100
       HEIGHT = 50
       MARGIN = 25
@@ -37,11 +37,19 @@ require(["jquery", "d3.v3"],  ->
         .attr("transform", (d, i) -> "translate(" + (i * (WIDTH + MARGIN)) + ", " + HEIGHT + " )")
         .attr("fill", (d, i) => getColor(i))
 
-      # rects
-      #   .append("svg:text")        
-      #   .text((d, i) => data[i].label)
+        
+      d3.select("svg").append("svg:circle")
+        .attr("r",50)
+        .attr("cx",100)
+        .attr("cy",100)
+        .call(d3.behavior.drag().on("drag", move))
 
-     #
+    move = ->
+      @parentNode.appendChild this
+      dragTarget = d3.select(this)
+      dragTarget.attr("cx", -> d3.event.dx + parseInt(dragTarget.attr("cx")))
+                .attr "cy", -> d3.event.dy + parseInt(dragTarget.attr("cy"))
+  
 
   class InfinitePie
 
