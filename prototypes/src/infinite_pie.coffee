@@ -47,20 +47,26 @@ require(["jquery", "d3.v3"],  ->
         .attr("x", (d, i) -> d.position.x )
         .attr("y", (d, i) -> d.position.y )
         .attr("fill", (d, i) -> getColor(i))
-        .call(d3.behavior.drag().on("drag", drag).on("dragend", dragend))
+        .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
+        .on("mouseup", (d, i) ->
+          # this.setAttributeNS(null, "pointer-events", "none");
+          console.log "rec mouseup", d3.event )
 
 
-    drag = ->
+    drag: ->
 
+      console.log "drag of category", d3.event
       dragTarget = d3.select(this)
       dragTarget
         .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
         .attr("y", -> d3.event.dy + +dragTarget.attr("y"))
                 
 
-    dragend = ->
+    dragend: ->
 
+      console.log "dragend of category", d3.event
       dragTarget = d3.select(this)
+      
       dragTarget
         .attr("x", (d, i) -> d.position.x)
         .attr("y", (d, i) -> d.position.y)
@@ -103,6 +109,34 @@ require(["jquery", "d3.v3"],  ->
       arcs.append("path")
           .attr("d", arc)
           .attr("fill", (d, i) -> getColor(colorIndex++))
+          .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
+          .on("mouseenter", (d, i) ->
+            d3.select(this).attr("fill-opacity", 0.8)
+            console.log "arc mouseenter"
+          )
+          .on("mouseleave", (d, i) ->
+            d3.select(this).attr("fill-opacity", 1)
+            console.log "arc mouseleave"
+          )
+          .on("mouseup", (d, i) -> console.log "arc mouseup", d3.event )
+
+
+    drag: ->
+
+      console.log "drag of pie"
+      dragTarget = d3.select(this)
+      dragTarget
+        .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
+        .attr("y", -> d3.event.dy + +dragTarget.attr("y"))
+                
+
+    dragend: ->
+
+      console.log "dragend of pie"
+      dragTarget = d3.select(this)
+      dragTarget
+        .attr("x", (d, i) -> d.position.x)
+        .attr("y", (d, i) -> d.position.y)
 
 
       # captions doesn't work?
@@ -210,6 +244,12 @@ require(["jquery", "d3.v3"],  ->
 
   c = new Category()
 
+
+  d3.select("svg")
+    .on("mouseenter", (d, i) -> console.log "svg mouseenter", d3.event )
+    .on("mouseleave", (d, i) -> console.log "svg mouseleave", d3.event )
+    .on("mousedown", (d, i) -> console.log "svg mousedown", d3.event )
+    .on("mouseup", (d, i) -> console.log "svg mouseup", d3.event )
 
 
 )
