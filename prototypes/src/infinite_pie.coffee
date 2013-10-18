@@ -14,7 +14,7 @@ require(["jquery", "d3.v3"],  ->
     HEIGHT: 50
     MARGIN: 25
 
-    constructor: () ->
+    constructor: ->
 
       @drawSquare()
 
