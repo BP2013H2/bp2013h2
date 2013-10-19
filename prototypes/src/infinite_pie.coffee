@@ -76,26 +76,29 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
     WIDTH: 50
 
-    constructor: (@innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
+    constructor: (@data, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
       
-      @drawPie()
+      # if @data == null
 
+      @data = {
+        "entityCategories": [[], [], []],
+        "values": [0, 10, 90]
+        }
+
+      @drawPie()
 
     drawPie: ->
 
-      @data = [{"label":"one", "value":20},
-               {"label":"two", "value":50},
-               {"label":"three", "value":30}]
 
 
-      pie = d3.layout.pie().value( (d) -> d.value ).startAngle(@startAngle).endAngle(@endAngle)
+      pie = d3.layout.pie().value( (d) -> d ).startAngle(@startAngle).endAngle(@endAngle)
       arc = d3.svg.arc().outerRadius(@outerRadius).innerRadius(@innerRadius)
 
       @pieFn = pie
 
       @arcContainer = pieContainer
         .append("g")
-        .data([@data])
+        .data([@data.values])
 
       arcs = @arcContainer
               .selectAll("g.slice")
@@ -112,9 +115,9 @@ require(["jquery", "d3.v3", "lodash"],  ->
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
           )
-          .on("mouseup", (d, i) ->
-            infinitePie.stackPie()
-          )
+          # .on("mouseup", (d, i) ->
+          #   infinitePie.stackPie()
+          # )
           .transition()
           .attr("d", arc)
           .attr("fill", (d, i) -> getColor(colorIndex++))
@@ -148,23 +151,57 @@ require(["jquery", "d3.v3", "lodash"],  ->
       #     .attr("text-anchor", "middle")
       #     .text((d, i) => data[i].label)
 
-    stackPie: ->
+    filterData: (categoryIndex, filterFunction) ->
+
+      partitionedData = []
+      values = []
+
+      elements = @data.entityCategories[categoryIndex]
+
+      for d in elements
+
+        bucketIndex = filterFunction(d)
+        bucket = partitionedData[bucketIndex]
+
+        if bucket
+          bucket.push(d)
+          values[bucketIndex]++
+        else
+          partitionedData[bucketIndex] = [d]
+          values[bucketIndex] = 1
+
+
+      for aValue, index in values
+        values[index] = Math.round(aValue / elements.length * 100)
+   
+
+      filteredData = {
+        "entityCategories" : partitionedData,
+        "values" : values
+      }
+
+      return partitionedData
+
+
+    stackPie: (filterFunction) ->
 
       
+      console.warn "filterFunction", filterFunction
+
       # @data = [{"label":"one", "value":20},
       #          {"label":"two", "value":50},
       #          {"label":"three", "value":30}]
 
       slices = @arcContainer.selectAll("g.slice")
-      data = slices.data()
-
       newPies = []
 
       slices.each( (d, i) => 
         
+        filteredData = @filterData(i, console.warn "filterFunction")
+
         startAngle = d.startAngle
         endAngle = d.endAngle
-        newPie = new Pie(@outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
+        newPie = new Pie(filteredData, @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
         newPies.push(newPie)
       )
 
@@ -180,7 +217,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
     constructor : (@data) ->
 
-      @layers = [[new Pie(50, 100)]]
+      @layers = [[new Pie(@data, 50, 100)]]
       @updatePosition()
 
 
@@ -189,7 +226,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
       newPies = []
 
       for eachPie in _.last(@layers)
-        pies = eachPie.stackPie()
+        pies = eachPie.stackPie(@data.filterFunctions.age)
         newPies = newPies.concat(pies)
 
       @layers.push(newPies)
@@ -213,11 +250,96 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
 
   marginTop = 150
-
   pieContainer = d3.select("svg").append("g")
-  infinitePie = new InfinitePie()
-  
 
+
+  data = {
+    entities: [
+      {name: "Adam", gender: "male", age: 63, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 46, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 39, "votedFor": "FDP"},
+      {name: "Adam", gender: "male", age: 27, "votedFor": "FDP"},
+      {name: "Adam", gender: "male", age: 40, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 63, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 42, "votedFor": "SPD"},
+      {name: "Adam", gender: "male", age: 19, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 25, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 65, "votedFor": "Piraten"},
+      {name: "Adam", gender: "male", age: 86, "votedFor": "CDU"},
+      {name: "Adam", gender: "female", age: 35, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 45, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 51, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 78, "votedFor": "Piraten"},
+      {name: "Adam", gender: "male", age: 38, "votedFor": "Piraten"},
+      {name: "Adam", gender: "male", age: 69, "votedFor": "Grüne"},
+      {name: "Adam", gender: "male", age: 21, "votedFor": "FDP"},
+      {name: "Adam", gender: "male", age: 74, "votedFor": "FDP"},
+      {name: "Adam", gender: "male", age: 86, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 38, "votedFor": "FDP"},
+      {name: "Adam", gender: "male", age: 44, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 20, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 19, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 18, "votedFor": "CDU"},
+      {name: "Adam", gender: "female", age: 23, "votedFor": "CDU"},
+      {name: "Adam", gender: "female", age: 64, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "female", age: 64, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 73, "votedFor": "SPD"},
+      {name: "Adam", gender: "male", age: 60, "votedFor": "CDU"},
+      {name: "Adam", gender: "female", age: 29, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 72, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 75, "votedFor": "CDU"},
+      {name: "Adam", gender: "female", age: 18, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 41, "votedFor": "FDP"},
+      {name: "Adam", gender: "male", age: 45, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 33, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 86, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 23, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 72, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 39, "votedFor": "CDU"},
+      {name: "Adam", gender: "male", age: 29, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 64, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "female", age: 48, "votedFor": "Grüne"},
+      {name: "Adam", gender: "female", age: 24, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 35, "votedFor": "SPD"},
+      {name: "Adam", gender: "female", age: 22, "votedFor": "Piraten"},
+      {name: "Adam", gender: "male", age: 35, "votedFor": "Piraten"},
+      {name: "Adam", gender: "male", age: 35, "votedFor": "FDP"},
+      {name: "Adam", gender: "male", age: 74, "votedFor": "Grüne"},
+      {name: "Adam", gender: "female", age: 27, "votedFor": "Sonstige"},
+      {name: "Adam", gender: "male", age: 79, "votedFor": "Sonstige"}
+    ],
+
+    filterFunctions: {
+
+      gender: (el) ->
+
+        categories = ["male": 0, "female": 1]
+        return categories[el.gender]
+      
+
+      age: (el) ->
+
+        if 18 < el.age < 30
+          0
+        else if el.age < 40
+          1
+        else if el.age < 60
+          2
+        else
+          3
+      
+
+      votedFor: (el) ->
+
+        categories = ["CDU": 0, "FDP": 1, "SPD": 2, "Piraten": 3, "Grüne": 4, "Sonstige", 5]
+        return categories[el.votedFor]
+
+    }
+
+  }
+
+
+  infinitePie = new InfinitePie(data)
   c = new Category()
 
 
