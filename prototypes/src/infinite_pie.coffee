@@ -115,41 +115,13 @@ require(["jquery", "d3.v3", "lodash"],  ->
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
           )
-          # .on("mouseup", (d, i) ->
-          #   infinitePie.stackPie()
-          # )
+          .on("mouseup", (d, i) ->
+            infinitePie.unstackPie()
+          )
           .transition()
           .attr("d", arc)
           .attr("fill", (d, i) -> getColor(colorIndex++))
 
-    drag: ->
-
-      # console.log "drag of pie"
-      dragTarget = d3.select(this)
-      dragTarget
-        .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
-        .attr("y", -> d3.event.dy + +dragTarget.attr("y"))
-                
-
-    dragend: ->
-
-      # console.log "dragend of pie"
-      dragTarget = d3.select(this)
-      dragTarget
-        .attr("x", (d, i) -> d.position.x)
-        .attr("y", (d, i) -> d.position.y)
-
-
-      # captions doesn't work?
-
-      # arcs.append("svg:text")
-      #     .attr("transform", (d) ->
-      #         d.innerRadius = 0
-      #         d.outerRadius = 100
-      #         return "translate" + arc.centroid(d) + ")"
-      #     )
-      #     .attr("text-anchor", "middle")
-      #     .text((d, i) => data[i].label)
 
     filterData: (categoryIndex, filterFunction) ->
 
@@ -207,9 +179,11 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       return newPies
 
-    getBiggestRadius: ->
 
-      return @outerRadius
+
+    remove: ->
+
+      @arcContainer.remove()
 
  
 
@@ -235,6 +209,15 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       return @
 
+    unstackPie: ->
+
+      for eachPie in _.last(@layers)
+
+        eachPie.remove()
+
+      @layers = @layers.slice(0, -1)
+
+      @updatePosition()
 
     getBiggestRadius: ->
 
@@ -251,7 +234,6 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
   marginTop = 150
   pieContainer = d3.select("svg").append("g")
-
 
   data = {
     entities: [
