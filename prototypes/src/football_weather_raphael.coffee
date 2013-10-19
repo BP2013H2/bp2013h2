@@ -1,5 +1,5 @@
-require(["libs/raphael-min", "libs/lodash.min", "football_data_2012"], (Raphael, underscoreDummy, {data}) ->
-  console.log "Football data:", data
+require(["libs/raphael-min", "libs/lodash.min", "football_data_2012", "football_preprocessor"], (Raphael, underscoreDummy, {dataset}, Preprocessor) ->
+
   WIDTH = 1200
   HEIGHT = 1000
   CONDITIONS_RECT_WIDTH = 500
@@ -29,6 +29,30 @@ require(["libs/raphael-min", "libs/lodash.min", "football_data_2012"], (Raphael,
     {
       name: "Fc Hirschfeld"
       p: 0.5
+      conditions: {
+        rain: 0.8
+        snow: 0.75
+        sun: 0.1
+        cold: 0.85
+        mild: 0.45
+        hot: 0.04
+      }
+    },
+    {
+      name: "Ulf SC"
+      p: 0.3
+      conditions: {
+        rain: 0.75
+        snow: 0.6
+        sun: 0
+        cold: 0.7
+        mild: 0.9
+        hot: 0.95
+      }
+    },
+    {
+      name: "BSC HPI"
+      p: 0.6
       conditions: {
         rain: 0.8
         snow: 0.75
@@ -96,12 +120,12 @@ require(["libs/raphael-min", "libs/lodash.min", "football_data_2012"], (Raphael,
   drawTeams = ->
 
     numberOfTeams = data.length
-    widthPerTeam = (CONDITIONS_RECT_WIDTH) / numberOfTeams
+    widthPerTeam = (CONDITIONS_RECT_WIDTH + 2 * 300) / numberOfTeams
     ellipseY = TEAM_ELLIPSE_Y
 
     for team, i in data
 
-      ellipseX = CONDITIONS_RECT_X + (i * widthPerTeam) + widthPerTeam / 2
+      ellipseX = (CONDITIONS_RECT_X - 300) + (i * widthPerTeam) + widthPerTeam / 2
       ellipse = paper.ellipse(ellipseX, ellipseY, TEAM_ELLIPSE_RX, TEAM_ELLIPSE_RY)
       ellipse.attr(fill: "#FFE073", stroke: "#FFC700")
       text = paper.text(ellipseX, ellipseY, team.name)
@@ -122,8 +146,20 @@ require(["libs/raphael-min", "libs/lodash.min", "football_data_2012"], (Raphael,
       for condition, value of team.conditions
 
         path = paper.path([
-          ["M", conditionRects[j].attr("x") + conditionRects[j].attr("width") / 2, conditionRects[j].attr("y")]
-          ["S", conditionRects[j].attr("x") + conditionRects[j].attr("width") / 2, teamEllipses[i].attr("cy"), teamEllipses[i].attr("cx"), teamEllipses[i].attr("cy")]
+          [
+            "M"
+            conditionRects[j].attr("x") + conditionRects[j].attr("width") / 2
+            conditionRects[j].attr("y")
+          ]
+          [
+            "C"
+            conditionRects[j].attr("x") + conditionRects[j].attr("width") / 2
+            conditionRects[j].attr("y") - 75
+            teamEllipses[i].attr("cx")
+            teamEllipses[i].attr("cy") + 75
+            teamEllipses[i].attr("cx")
+            teamEllipses[i].attr("cy")
+          ]
         ])
         deviation = Math.abs(team.p - value)
         color = Raphael.hsl((Math.pow(1 - deviation, 2)) * 120, 100, 50)
@@ -139,11 +175,15 @@ require(["libs/raphael-min", "libs/lodash.min", "football_data_2012"], (Raphael,
 
     width = 30
     height = 120
-    paper.rect(CONDITIONS_RECT_X + CONDITIONS_RECT_WIDTH + 50, TEAM_ELLIPSE_Y, width, height)
-      .attr("fill", "90-#f00:0-#fd0:30-#ff0:50-#df0:70-#0f0:100")
-    paper.text(CONDITIONS_RECT_X + CONDITIONS_RECT_WIDTH + 100 + width, TEAM_ELLIPSE_Y, "0% Abweichung")
-    paper.text(CONDITIONS_RECT_X + CONDITIONS_RECT_WIDTH + 100 + width, TEAM_ELLIPSE_Y + height, "100% Abweichung")
+    paper.rect(10, 10, width, height)
+      .attr({"fill": "90-#f00:0-#fd0:30-#ff0:50-#df0:70-#0f0:100", "stroke-width": 0.1})
+    paper.text(60 + width, 10, "0% Abweichung")
+    paper.text(60 + width, 10 + height, "100% Abweichung")
 
+
+  preprocessor = new Preprocessor()
+  preprocessor.setData(dataset)
+  preprocessor.preprocessData()
 
   drawConditionRects()
   drawTeams()
