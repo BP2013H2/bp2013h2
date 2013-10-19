@@ -2,10 +2,11 @@ require.config(
   baseUrl: 'js/libs'
 )
 
-require(["jquery", "d3.v3"],  ->
+require(["jquery", "d3.v3", "lodash"],  ->
 
   
   getColor = d3.scale.category20c()
+  getColorCategory = d3.scale.category10()
   colorIndex = 0
 
   class Category
@@ -46,16 +47,15 @@ require(["jquery", "d3.v3"],  ->
         .attr("height", @HEIGHT)
         .attr("x", (d, i) -> d.position.x )
         .attr("y", (d, i) -> d.position.y )
-        .attr("fill", (d, i) -> getColor(i))
+        .attr("fill", (d, i) -> getColorCategory(i))
         .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
-        .on("mouseup", (d, i) ->
+        # .on("mouseup", (d, i) ->
           # this.setAttributeNS(null, "pointer-events", "none");
-          console.log "rec mouseup", d3.event )
+        # )
 
 
     drag: ->
 
-      console.log "drag of category", d3.event
       dragTarget = d3.select(this)
       dragTarget
         .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
@@ -64,19 +64,15 @@ require(["jquery", "d3.v3"],  ->
 
     dragend: ->
 
-      console.log "dragend of category", d3.event
-      dragTarget = d3.select(this)
-      
+      dragTarget = d3.select(this)    
       dragTarget
         .attr("x", (d, i) -> d.position.x)
         .attr("y", (d, i) -> d.position.y)
 
-        
-      
+      infinitePie.stackPie()
 
 
-
-  class InfinitePie
+  class Pie
 
     WIDTH: 50
 
@@ -107,42 +103,25 @@ require(["jquery", "d3.v3"],  ->
               .enter()
               .append("g")
               .attr("class", "slice")
-              # .transition()
 
       arcs
           .append("path")
-          .on("mouseenter", (d, i) =>
-            
-            # d3.select(` this `)
-            #   .data(pie)
-            #   .transition()
-            #   .attr("d", arc)
-            #   .attr("fill-opacity", 0.8)
-            console.log "arc mouseenter"
+          .on("mouseenter", (d, i) ->
+            d3.select(this).attr("fill-opacity", 0.8)
           )
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
-            console.log "arc mouseleave"
           )
-          .on("mouseup", (d, i) =>
-
-            window.pieCollection = window.pieCollection.stackPie()
-
-            biggestRadius = window.pieCollection.getBiggestRadius()
-            pieContainer.transition().duration(100).attr("transform", "translate(#{biggestRadius}, #{biggestRadius + marginTop})")
-
-            console.log "arc mouseup", d3.event
-
+          .on("mouseup", (d, i) ->
+            infinitePie.stackPie()
           )
           .transition()
           .attr("d", arc)
           .attr("fill", (d, i) -> getColor(colorIndex++))
-          # .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
-
 
     drag: ->
 
-      console.log "drag of pie"
+      # console.log "drag of pie"
       dragTarget = d3.select(this)
       dragTarget
         .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
@@ -151,7 +130,7 @@ require(["jquery", "d3.v3"],  ->
 
     dragend: ->
 
-      console.log "dragend of pie"
+      # console.log "dragend of pie"
       dragTarget = d3.select(this)
       dragTarget
         .attr("x", (d, i) -> d.position.x)
@@ -179,99 +158,67 @@ require(["jquery", "d3.v3"],  ->
       slices = @arcContainer.selectAll("g.slice")
       data = slices.data()
 
-      pies = []
+      newPies = []
 
       slices.each( (d, i) => 
         
         startAngle = d.startAngle
         endAngle = d.endAngle
-        newPie = new InfinitePie(@outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
-        pies.push(newPie)
+        newPie = new Pie(@outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
+        newPies.push(newPie)
       )
 
-      pieCollection = new PieCollection(pies)
-      return pieCollection
+      return newPies
 
     getBiggestRadius: ->
 
       return @outerRadius
 
  
-  class PieCollection
 
-    constructor : (@pies) ->
+  class InfinitePie
+
+    constructor : (@data) ->
+
+      @layers = [[new Pie(50, 100)]]
+      @updatePosition()
+
 
     stackPie : ->
 
       newPies = []
 
-      for eachPie in @pies
-          newPies.push(eachPie.stackPie())
+      for eachPie in _.last(@layers)
+        pies = eachPie.stackPie()
+        newPies = newPies.concat(pies)
 
-      pieCollection = new PieCollection(newPies)
+      @layers.push(newPies)
+      
+      @updatePosition()
 
-      return pieCollection
+      return @
+
 
     getBiggestRadius: ->
 
-      biggestRadius = 0
+      return _.last(@layers)[0].outerRadius
 
-      for eachPie in @pies
-        biggestRadius = Math.max(biggestRadius, eachPie.getBiggestRadius())
+    updatePosition: ->
 
-      return biggestRadius
-
-
-  pieContainer = d3.select("svg").append("g")
-    
-
-  pie = new InfinitePie(50, 100)
-  pieCollection = pie.stackPie()#.stackPie().stackPie().stackPie()
-
-  window.pieCollection = pieCollection
+      biggestRadius = @getBiggestRadius()
+      pieContainer.transition().duration(100).attr("transform", "translate(
+        #{biggestRadius},
+        #{biggestRadius + marginTop}
+      )")
 
 
   marginTop = 150
+
+  pieContainer = d3.select("svg").append("g")
+  infinitePie = new InfinitePie()
   
-  window.pieCollection = pieCollection
-
-  biggestRadius = pieCollection.getBiggestRadius()
-  pieContainer.attr("transform", "translate(#{biggestRadius}, #{biggestRadius + marginTop})")
-
-  HEIGHT = 500
-
-
-  zoomed = ->
-    # pieContainer.translate(d3.event.translate).scale(d3.event.scale);
-
-    console.log "d3.event.translate", d3.event.translate
-    console.log "d3.event.scale", d3.event.scale
-
-    # g.selectAll("path").attr("d", path);
-
-
-  # zoom = d3.behavior.zoom()
-  #   # .translate([100, 100] )
-  #   # .scale(-> console.log "scale", arguments )
-  #   # .scaleExtent(-> console.log "scaleExtent", arguments )
-  #   .on("zoom", zoomed)
-
-  # # pieContainer.call(zoom, zoomed)
-  # pieContainer.call(d3.behavior.zoom().on("zoom"), zoomed);
-
-    # .translate(pieContainer.translate())
-    # .scale(pieContainer.scale())
-    # .scaleExtent([HEIGHT, 8 * HEIGHT])
-    # .on("zoom", zoomed);
 
   c = new Category()
-
-
-  d3.select("svg")
-    .on("mouseenter", (d, i) -> console.log "svg mouseenter", d3.event )
-    .on("mouseleave", (d, i) -> console.log "svg mouseleave", d3.event )
-    .on("mousedown", (d, i) -> console.log "svg mousedown", d3.event )
-    .on("mouseup", (d, i) -> console.log "svg mouseup", d3.event )
 
 
 )
