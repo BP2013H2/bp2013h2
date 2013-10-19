@@ -95,6 +95,8 @@ require(["jquery", "d3.v3"],  ->
       pie = d3.layout.pie().value( (d) -> d.value ).startAngle(@startAngle).endAngle(@endAngle)
       arc = d3.svg.arc().outerRadius(@outerRadius).innerRadius(@innerRadius)
 
+      @pieFn = pie
+
       @arcContainer = pieContainer
         .append("g")
         .data([@data])
@@ -105,20 +107,37 @@ require(["jquery", "d3.v3"],  ->
               .enter()
               .append("g")
               .attr("class", "slice")
+              # .transition()
 
-      arcs.append("path")
-          .attr("d", arc)
-          .attr("fill", (d, i) -> getColor(colorIndex++))
-          .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
-          .on("mouseenter", (d, i) ->
-            d3.select(this).attr("fill-opacity", 0.8)
+      arcs
+          .append("path")
+          .on("mouseenter", (d, i) =>
+            
+            # d3.select(` this `)
+            #   .data(pie)
+            #   .transition()
+            #   .attr("d", arc)
+            #   .attr("fill-opacity", 0.8)
             console.log "arc mouseenter"
           )
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
             console.log "arc mouseleave"
           )
-          .on("mouseup", (d, i) -> console.log "arc mouseup", d3.event )
+          .on("mouseup", (d, i) =>
+
+            window.pieCollection = window.pieCollection.stackPie()
+
+            biggestRadius = window.pieCollection.getBiggestRadius()
+            pieContainer.transition().duration(100).attr("transform", "translate(#{biggestRadius}, #{biggestRadius + marginTop})")
+
+            console.log "arc mouseup", d3.event
+
+          )
+          .transition()
+          .attr("d", arc)
+          .attr("fill", (d, i) -> getColor(colorIndex++))
+          # .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
 
 
     drag: ->
@@ -190,6 +209,7 @@ require(["jquery", "d3.v3"],  ->
           newPies.push(eachPie.stackPie())
 
       pieCollection = new PieCollection(newPies)
+
       return pieCollection
 
     getBiggestRadius: ->
@@ -208,12 +228,14 @@ require(["jquery", "d3.v3"],  ->
   pie = new InfinitePie(50, 100)
   pieCollection = pie.stackPie()#.stackPie().stackPie().stackPie()
 
-  biggestRadius = pieCollection.getBiggestRadius()
+  window.pieCollection = pieCollection
+
 
   marginTop = 150
   
   window.pieCollection = pieCollection
 
+  biggestRadius = pieCollection.getBiggestRadius()
   pieContainer.attr("transform", "translate(#{biggestRadius}, #{biggestRadius + marginTop})")
 
   HEIGHT = 500
