@@ -206,7 +206,10 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
     getNextFilterFunction: ->
 
-      return @data.filterFunctions[@filterFunctionsToUse[@currentFilterIndex++]]
+      if @filterFunctionsToUse.length > @currentFilterIndex
+        return @data.filterFunctions[@filterFunctionsToUse[@currentFilterIndex++]]
+        
+      return null
 
 
     stackPie : ->
@@ -237,6 +240,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
         @layers = @layers.slice(0, -1)
 
         @updatePosition()
+        @currentFilterIndex--
 
     getBiggestRadius: ->
 
@@ -251,15 +255,24 @@ require(["jquery", "d3.v3", "lodash"],  ->
       )")
 
   zoom = ->
-    console.log "gezoomt"
-    svg.attr "transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"
+    console.log d3.event.translate, d3.event.scale
+    translate = [d3.event.translate[0] * d3.event.scale, d3.event.translate[1] * d3.event.scale]
+    zoomContainer.attr("transform", "translate(" + translate + ")scale(" + d3.event.scale + ")")
    
   svg = d3.select("svg")
-    .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
-    .append("g")
+
+
+  zoomContainer = svg.append("g")
+    .attr("height", 800)
+    .attr("width", 850)
+
+  pieContainer = zoomContainer.append("g")
+
+
+  # zoomContainer
+  #   .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
 
   marginTop = 150
-  pieContainer = svg.append("g")
 
   data = {
     entities: [
