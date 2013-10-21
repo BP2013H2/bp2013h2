@@ -80,10 +80,10 @@ require(["jquery", "d3.v3", "lodash"],  ->
       
       # if @data == null
 
-      @data = {
-        "entityCategories": [[], [], []],
-        "values": [0, 10, 90]
-        }
+      # @data = {
+      #   "entityCategories": [[], [], []],
+      #   "percentages": [0, 10, 90]
+      #   }
 
       @drawPie()
 
@@ -98,7 +98,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       @arcContainer = pieContainer
         .append("g")
-        .data([@data.values])
+        .data([@data.percentages])
 
       arcs = @arcContainer
               .selectAll("g.slice")
@@ -126,9 +126,12 @@ require(["jquery", "d3.v3", "lodash"],  ->
     filterData: (categoryIndex, filterFunction) ->
 
       partitionedData = []
-      values = []
+      percentages = []
 
       elements = @data.entityCategories[categoryIndex]
+
+      if !elements or elements.length == 0
+        console.error "elements empty?"
 
       for d in elements
 
@@ -137,39 +140,35 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
         if bucket
           bucket.push(d)
-          values[bucketIndex]++
+          percentages[bucketIndex]++
         else
           partitionedData[bucketIndex] = [d]
-          values[bucketIndex] = 1
+          percentages[bucketIndex] = 1
 
+      
+      partitionedData = _.compact(partitionedData) 
+      percentages = _.compact(percentages)
 
-      for aValue, index in values
-        values[index] = Math.round(aValue / elements.length * 100)
+      for aValue, index in percentages
+        percentages[index] = Math.round(aValue / elements.length * 100)
    
 
-      filteredData = {
+      model = {
         "entityCategories" : partitionedData,
-        "values" : values
+        "percentages" : percentages
       }
 
-      return partitionedData
+      return model
 
 
     stackPie: (filterFunction) ->
-
-      
-      console.warn "filterFunction", filterFunction
-
-      # @data = [{"label":"one", "value":20},
-      #          {"label":"two", "value":50},
-      #          {"label":"three", "value":30}]
 
       slices = @arcContainer.selectAll("g.slice")
       newPies = []
 
       slices.each( (d, i) => 
         
-        filteredData = @filterData(i, console.warn "filterFunction")
+        filteredData = @filterData(i, filterFunction)
 
         startAngle = d.startAngle
         endAngle = d.endAngle
@@ -191,33 +190,53 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
     constructor : (@data) ->
 
-      @layers = [[new Pie(@data, 50, 100)]]
+      @filterFunctionsToUse = ["age", "gender", "votedFor"]
+      @currentFilterIndex = 0
+
+
+      model = {
+        "entityCategories": [@data.entities],
+        "percentages": [100]
+        }
+
+
+      @layers = [[new Pie(model, 50, 100)]]
       @updatePosition()
+
+
+    getNextFilterFunction: ->
+
+      return @data.filterFunctions[@filterFunctionsToUse[@currentFilterIndex++]]
 
 
     stackPie : ->
 
       newPies = []
+      currentFilterFunction = @getNextFilterFunction()
 
-      for eachPie in _.last(@layers)
-        pies = eachPie.stackPie(@data.filterFunctions.age)
-        newPies = newPies.concat(pies)
+      if currentFilterFunction
 
-      @layers.push(newPies)
-      
-      @updatePosition()
+        for eachPie in _.last(@layers)
+          pies = eachPie.stackPie(currentFilterFunction)
+          newPies = newPies.concat(pies)
+
+        @layers.push(newPies)
+        
+        @updatePosition()
 
       return @
 
     unstackPie: ->
 
-      for eachPie in _.last(@layers)
+      if @layers.length > 1
 
-        eachPie.remove()
+        for eachPie in _.last(@layers)
 
-      @layers = @layers.slice(0, -1)
+          eachPie.remove()
 
-      @updatePosition()
+        @layers = @layers.slice(0, -1)
+
+        @updatePosition()
 
     getBiggestRadius: ->
 
@@ -295,7 +314,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       gender: (el) ->
 
-        categories = ["male": 0, "female": 1]
+        categories = {"male": 0, "female": 1}
         return categories[el.gender]
       
 
@@ -313,7 +332,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       votedFor: (el) ->
 
-        categories = ["CDU": 0, "FDP": 1, "SPD": 2, "Piraten": 3, "Grüne": 4, "Sonstige", 5]
+        categories = {"CDU": 0, "FDP": 1, "SPD": 2, "Piraten": 3, "Grüne": 4, "Sonstige": 5}
         return categories[el.votedFor]
 
     }
