@@ -15,23 +15,16 @@ require(["jquery", "d3.v3", "lodash"],  ->
     HEIGHT: 50
     MARGIN: 25
 
-    constructor: ->
+    constructor: (@data) ->
 
       @drawSquare()
 
 
     drawSquare: ->
   
-
-      data = [{"label":"Wahlenscheidung"},
-              {"label":"Ost/West"},
-              {"label":"Alter"},
-              {"label":"Tätigkeit"},
-              {"label":"Geschlecht"},
-              {"label":"Beruf"},
-              {"label":"Schulabschluss"},
-              {"label":"Haushaltseinkommen"}]
-
+      data = []
+      for k, v of @data.filterFunctions
+        data.push({"label" : k})
 
       for d, i in data
         d.position =
@@ -43,16 +36,34 @@ require(["jquery", "d3.v3", "lodash"],  ->
         .data(data)
         .enter()
         .append("rect")
+
         .attr("width", @WIDTH)
         .attr("height", @HEIGHT)
         .attr("x", (d, i) -> d.position.x )
         .attr("y", (d, i) -> d.position.y )
         .attr("fill", (d, i) -> getColorCategory(i))
-        .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
+        .attr("id", (d, i) -> return "category_" + i)
         
-        # .on("mouseup", (d, i) ->
-          # this.setAttributeNS(null, "pointer-events", "none");
-        # )
+        .on("mouseenter", (d, i) ->
+          d3.select(this).attr("fill-opacity", 0.8) 
+        )
+        .on("mouseup", (d, i) =>
+          @unuse(d3.select(` this `))
+        )
+        .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
+      
+      console.log "rects", rects
+
+    use: (el) ->
+
+      el.transition().duration(500).attr("fill-opacity", 0.3)
+      @used = true
+
+
+    unuse: (el) ->
+
+      el.attr("fill-opacity", 1) 
+      @used = false
 
     drag: ->
 
@@ -60,24 +71,27 @@ require(["jquery", "d3.v3", "lodash"],  ->
       dragTarget
         .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
         .attr("y", -> d3.event.dy + +dragTarget.attr("y"))
-                
+              
 
-    dragend: ->
+    dragend: (d, i) ->
 
       dragTarget = d3.select(this)    
       dragTarget
         .attr("x", (d, i) -> d.position.x)
         .attr("y", (d, i) -> d.position.y)
 
-      infinitePie.stackPie()
+      unless @used
+        infinitePie.stackPie(i)
 
 
   class Pie
 
     WIDTH: 50
 
-    constructor: (@data, @attributes, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
+    constructor: (@data, @descriptor, @attributes, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
       
+
+      @used = false      
       # if @data == null
 
       # @data = {
@@ -113,13 +127,17 @@ require(["jquery", "d3.v3", "lodash"],  ->
           .on("mouseenter", (d, i) ->
             d3.select(this).attr("fill-opacity", 0.8)
           )
-          .on("mouseover", (d) =>
+          .on("mouseover", (d, i) =>
             # console.log @
             # debugger
+
+            # description = "Data description<br/>"
+            description = "<ul><li>" + @attributes.concat(@descriptor(i)).join(" </li><li> ") + "</li></ul>"
+
             div.transition()
                .duration(200)
                .style("opacity", .9)
-            div.html("Data description<br/>")
+            div.html(description)
                .style("left", (d3.event.pageX) + "px")
                .style("top", (d3.event.pageY - 28) + "px")
           )
@@ -177,7 +195,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
       return model
 
 
-    stackPie: (filterFunction) ->
+    stackPie: (filterFunction, descriptorFunction) ->
 
       slices = @arcContainer.selectAll("g.slice")
       newPies = []
@@ -188,7 +206,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
         startAngle = d.startAngle
         endAngle = d.endAngle
-        newPie = new Pie(filteredData, "", @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
+        newPie = new Pie(filteredData, descriptorFunction, @attributes.concat(@descriptor(i)), @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
         newPies.push(newPie)
       )
 
@@ -206,6 +224,8 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
     constructor : (@data) ->
 
+      new Category(@data)
+
       @filterFunctionsToUse = ["age", "gender", "votedFor"]
       @currentFilterIndex = 0
 
@@ -216,27 +236,39 @@ require(["jquery", "d3.v3", "lodash"],  ->
         }
 
 
-      @layers = [[new Pie(model, ["alle ->"], 50, 100)]]
+      @layers = [[new Pie(model, (-> "alle"), [], 50, 100)]]
       @updatePosition()
 
+
+    getFilterFunctions: (index) ->
+
+      if @filterFunctionsToUse.length > index
+        identifier = @filterFunctionsToUse[index]
+
+        return [@data.filterFunctions[identifier], @data.descriptors[identifier]]
+
+      return [null, null]
 
     getNextFilterFunction: ->
 
       if @filterFunctionsToUse.length > @currentFilterIndex
-        return @data.filterFunctions[@filterFunctionsToUse[@currentFilterIndex++]]
+        identifier = @filterFunctionsToUse[@currentFilterIndex++]
+
+        return [@data.filterFunctions[identifier], @data.descriptors[identifier]]
 
       return null
 
 
-    stackPie : ->
+    stackPie : (filterIndex) ->
+
 
       newPies = []
-      currentFilterFunction = @getNextFilterFunction()
+      [currentFilter, currentDescriptor] = @getFilterFunctions(filterIndex)
 
-      if currentFilterFunction
+      if currentFilter
 
         for eachPie in _.last(@layers)
-          pies = eachPie.stackPie(currentFilterFunction)
+          pies = eachPie.stackPie(currentFilter, currentDescriptor)
           newPies = newPies.concat(pies)
 
         @layers.push(newPies)
@@ -399,5 +431,4 @@ require(["jquery", "d3.v3", "lodash"],  ->
   }
   
   infinitePie = new InfinitePie(data)
-  c = new Category()
 )
