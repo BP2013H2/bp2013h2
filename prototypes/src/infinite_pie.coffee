@@ -87,6 +87,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       @drawPie()
 
+
     drawPie: ->
 
 
@@ -111,6 +112,21 @@ require(["jquery", "d3.v3", "lodash"],  ->
           .append("path")
           .on("mouseenter", (d, i) ->
             d3.select(this).attr("fill-opacity", 0.8)
+          )
+          .on("mouseover", (d) =>
+            console.log @
+            debugger
+            div.transition()
+               .duration(200)
+               .style("opacity", .9)
+            div.html("Test tooltip<br/>")
+               .style("left", (d3.event.pageX) + "px")
+               .style("top", (d3.event.pageY - 28) + "px")
+          )
+          .on("mouseout", (d) ->
+            div.transition()
+               .duration(500)
+               .style("opacity", 0)
           )
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
@@ -208,7 +224,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       if @filterFunctionsToUse.length > @currentFilterIndex
         return @data.filterFunctions[@filterFunctionsToUse[@currentFilterIndex++]]
-        
+
       return null
 
 
@@ -258,9 +274,11 @@ require(["jquery", "d3.v3", "lodash"],  ->
     console.log d3.event.translate, d3.event.scale
     translate = [d3.event.translate[0] * d3.event.scale, d3.event.translate[1] * d3.event.scale]
     zoomContainer.attr("transform", "translate(" + translate + ")scale(" + d3.event.scale + ")")
-   
-  svg = d3.select("svg")
 
+  svg = d3.select("svg")
+  div = d3.select("body").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
 
   zoomContainer = svg.append("g")
     .attr("height", 800)
