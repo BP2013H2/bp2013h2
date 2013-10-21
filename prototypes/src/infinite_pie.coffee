@@ -76,7 +76,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
     WIDTH: 50
 
-    constructor: (@data, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
+    constructor: (@data, @attributes, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
       
       # if @data == null
 
@@ -114,12 +114,12 @@ require(["jquery", "d3.v3", "lodash"],  ->
             d3.select(this).attr("fill-opacity", 0.8)
           )
           .on("mouseover", (d) =>
-            console.log @
-            debugger
+            # console.log @
+            # debugger
             div.transition()
                .duration(200)
                .style("opacity", .9)
-            div.html("Test tooltip<br/>")
+            div.html("Data description<br/>")
                .style("left", (d3.event.pageX) + "px")
                .style("top", (d3.event.pageY - 28) + "px")
           )
@@ -188,7 +188,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
         startAngle = d.startAngle
         endAngle = d.endAngle
-        newPie = new Pie(filteredData, @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
+        newPie = new Pie(filteredData, "", @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
         newPies.push(newPie)
       )
 
@@ -216,7 +216,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
         }
 
 
-      @layers = [[new Pie(model, 50, 100)]]
+      @layers = [[new Pie(model, ["alle ->"], 50, 100)]]
       @updatePosition()
 
 
@@ -372,6 +372,27 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
         categories = {"CDU": 0, "FDP": 1, "SPD": 2, "Piraten": 3, "Grüne": 4, "Sonstige": 5}
         return categories[el.votedFor]
+
+    },
+
+    descriptors: {
+
+      gender: (index) ->
+
+        categories = ["männlich", "weiblich"]
+        return categories[index]
+      
+
+      age: (index) ->
+
+        categories = ["18 - 30", "30 - 40", "40 - 60", "> 60"]
+        return categories[index] + " Jahre alt"
+
+
+      votedFor: (index) ->
+
+        categories = ["CDU", "FDP", "SPD", "Piraten", "Grüne", "Sonstige"]
+        return categories[index]
 
     }
 
