@@ -116,7 +116,7 @@ define( ["libs/jquery"], ->
           )
             count++
             if game["FTHG"] > game["FTAG"]
-              return ++sum 
+              return ++sum
             else
               return sum
           else if (
@@ -128,7 +128,7 @@ define( ["libs/jquery"], ->
               return ++sum
             else
               return sum
-          else 
+          else
             return sum
         ), 0)
 
@@ -158,7 +158,7 @@ define( ["libs/jquery"], ->
           )
             count++
             return sum + game["FTAG"]
-          else 
+          else
             return sum
         ), 0)
 
