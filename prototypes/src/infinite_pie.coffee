@@ -1,8 +1,75 @@
 require.config(
-  baseUrl: 'js/libs'
+  baseUrl: 'js'
 )
 
-require(["jquery", "d3.v3", "lodash"],  ->
+require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b, _c, carMakes) ->
+
+  class CarData
+
+    constructor: ->
+
+
+    retrieveData: ->
+
+      @retrieveModels()
+
+    retrieveModels: ->
+
+      year = 2000
+
+      allModels = {}
+
+      for aMake in carMakes.dataset
+        console.log("aMake.make_id",  aMake.make_id)
+        make = aMake.make_id
+        
+
+        $.ajax({"url": "http://www.carqueryapi.com/api/0.3/?callback=data&cmd=getModels&make=#{make}&year=#{year}&sold_in_us=", dataType: "jsonp"})
+          .done( (data) ->
+            
+            console.error("this", data.Models)
+
+            allModels[make] = data.Models
+
+            window.allModels = allModels
+
+          ).fail( ->
+            console.error("error")
+          )
+
+
+      return
+
+
+
+    retrieveManufactors: ->
+
+      # already fetched
+      return
+      interestingCarManufacturers = []
+
+      years = (x for x in [1900..2010] by 10)
+
+      for aYear in years
+
+        $.ajax({"url": "http://www.carqueryapi.com/api/0.3/?callback=data&cmd=getMakes&year=#{aYear}", dataType: "jsonp"})
+          .done( (data) ->
+            # data = [ {make_country : "UK", "make_is_common" : 0, "make_display" : "Acura" } ]
+
+            interestingCarManufacturers[aYear] = []
+            for d in data.Makes
+              if d.make_is_common == "1"
+                interestingCarManufacturers[aYear].push(d)
+
+            console.log aYear, interestingCarManufacturers[aYear]
+
+          ).fail( -> 
+            console.log("error")
+          )
+
+      window.interestingCarManufacturers = interestingCarManufacturers
+
+  (new CarData).retrieveData()
 
   
   getColor = d3.scale.category20c()
@@ -15,44 +82,55 @@ require(["jquery", "d3.v3", "lodash"],  ->
     HEIGHT: 50
     MARGIN: 25
 
-    constructor: ->
+    constructor: (@data) ->
 
       @drawSquare()
 
 
     drawSquare: ->
   
-
-      data = [{"label":"Wahlenscheidung"},
-              {"label":"Ost/West"},
-              {"label":"Alter"},
-              {"label":"Tätigkeit"},
-              {"label":"Geschlecht"},
-              {"label":"Beruf"},
-              {"label":"Schulabschluss"},
-              {"label":"Haushaltseinkommen"}]
-
+      data = []
+      for k, v of @data.filterFunctions
+        data.push({"label" : k})
 
       for d, i in data
         d.position =
           x: i * (@WIDTH + @MARGIN)
           y: @HEIGHT
 
-      rects = d3.select("svg").append("g")
+      rects = svg.append("g")
         .selectAll("rect")
         .data(data)
         .enter()
         .append("rect")
+
         .attr("width", @WIDTH)
         .attr("height", @HEIGHT)
         .attr("x", (d, i) -> d.position.x )
         .attr("y", (d, i) -> d.position.y )
         .attr("fill", (d, i) -> getColorCategory(i))
+        .attr("id", (d, i) -> return "category_" + i)
+        
+        .on("mouseenter", (d, i) ->
+          d3.select(this).attr("fill-opacity", 0.8) 
+        )
+        .on("mouseup", (d, i) =>
+          @unuse(d3.select(` this `))
+        )
         .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
-        # .on("mouseup", (d, i) ->
-          # this.setAttributeNS(null, "pointer-events", "none");
-        # )
+      
+      console.log "rects", rects
 
+    use: (el) ->
+
+      el.transition().duration(500).attr("fill-opacity", 0.3)
+      @used = true
+
+
+    unuse: (el) ->
+
+      el.attr("fill-opacity", 1) 
+      @used = false
 
     drag: ->
 
@@ -60,32 +138,36 @@ require(["jquery", "d3.v3", "lodash"],  ->
       dragTarget
         .attr("x", -> d3.event.dx + +dragTarget.attr("x"))
         .attr("y", -> d3.event.dy + +dragTarget.attr("y"))
-                
+              
 
-    dragend: ->
+    dragend: (d, i) ->
 
       dragTarget = d3.select(this)    
       dragTarget
         .attr("x", (d, i) -> d.position.x)
         .attr("y", (d, i) -> d.position.y)
 
-      infinitePie.stackPie()
+      unless @used
+        infinitePie.stackPie(i)
 
 
   class Pie
 
     WIDTH: 50
 
-    constructor: (@data, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
+    constructor: (@data, @descriptor, @attributes, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
       
+
+      @used = false      
       # if @data == null
 
-      @data = {
-        "entityCategories": [[], [], []],
-        "values": [0, 10, 90]
-        }
+      # @data = {
+      #   "entityCategories": [[], [], []],
+      #   "percentages": [0, 10, 90]
+      #   }
 
       @drawPie()
+
 
     drawPie: ->
 
@@ -98,7 +180,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       @arcContainer = pieContainer
         .append("g")
-        .data([@data.values])
+        .data([@data.percentages])
 
       arcs = @arcContainer
               .selectAll("g.slice")
@@ -111,6 +193,25 @@ require(["jquery", "d3.v3", "lodash"],  ->
           .append("path")
           .on("mouseenter", (d, i) ->
             d3.select(this).attr("fill-opacity", 0.8)
+          )
+          .on("mouseover", (d, i) =>
+            # console.log @
+            # debugger
+
+            # description = "Data description<br/>"
+            description = "<ul><li>" + @attributes.concat(@descriptor(i)).join(" </li><li> ") + "</li></ul>"
+
+            div.transition()
+               .duration(200)
+               .style("opacity", .9)
+            div.html(description)
+               .style("left", (d3.event.pageX) + "px")
+               .style("top", (d3.event.pageY - 28) + "px")
+          )
+          .on("mouseout", (d) ->
+            div.transition()
+               .duration(500)
+               .style("opacity", 0)
           )
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
@@ -126,9 +227,12 @@ require(["jquery", "d3.v3", "lodash"],  ->
     filterData: (categoryIndex, filterFunction) ->
 
       partitionedData = []
-      values = []
+      percentages = []
 
       elements = @data.entityCategories[categoryIndex]
+
+      if !elements or elements.length == 0
+        console.error "elements empty?"
 
       for d in elements
 
@@ -137,43 +241,39 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
         if bucket
           bucket.push(d)
-          values[bucketIndex]++
+          percentages[bucketIndex]++
         else
           partitionedData[bucketIndex] = [d]
-          values[bucketIndex] = 1
-
-
-      for aValue, index in values
-        values[index] = Math.round(aValue / elements.length * 100)
-   
-
-      filteredData = {
-        "entityCategories" : partitionedData,
-        "values" : values
-      }
-
-      return partitionedData
-
-
-    stackPie: (filterFunction) ->
+          percentages[bucketIndex] = 1
 
       
-      console.warn "filterFunction", filterFunction
+      partitionedData = _.compact(partitionedData) 
+      percentages = _.compact(percentages)
 
-      # @data = [{"label":"one", "value":20},
-      #          {"label":"two", "value":50},
-      #          {"label":"three", "value":30}]
+      for aValue, index in percentages
+        percentages[index] = Math.round(aValue / elements.length * 100)
+   
+
+      model = {
+        "entityCategories" : partitionedData,
+        "percentages" : percentages
+      }
+
+      return model
+
+
+    stackPie: (filterFunction, descriptorFunction) ->
 
       slices = @arcContainer.selectAll("g.slice")
       newPies = []
 
       slices.each( (d, i) => 
         
-        filteredData = @filterData(i, console.warn "filterFunction")
+        filteredData = @filterData(i, filterFunction)
 
         startAngle = d.startAngle
         endAngle = d.endAngle
-        newPie = new Pie(filteredData, @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
+        newPie = new Pie(filteredData, descriptorFunction, @attributes.concat(@descriptor(i)), @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
         newPies.push(newPie)
       )
 
@@ -191,33 +291,71 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
     constructor : (@data) ->
 
-      @layers = [[new Pie(@data, 50, 100)]]
+      new Category(@data)
+
+      @filterFunctionsToUse = ["age", "gender", "votedFor"]
+      @currentFilterIndex = 0
+
+
+      model = {
+        "entityCategories": [@data.entities],
+        "percentages": [100]
+        }
+
+
+      @layers = [[new Pie(model, (-> "alle"), [], 50, 100)]]
       @updatePosition()
 
 
-    stackPie : ->
+    getFilterFunctions: (index) ->
+
+      if @filterFunctionsToUse.length > index
+        identifier = @filterFunctionsToUse[index]
+
+        return [@data.filterFunctions[identifier], @data.descriptors[identifier]]
+
+      return [null, null]
+
+    getNextFilterFunction: ->
+
+      if @filterFunctionsToUse.length > @currentFilterIndex
+        identifier = @filterFunctionsToUse[@currentFilterIndex++]
+
+        return [@data.filterFunctions[identifier], @data.descriptors[identifier]]
+
+      return null
+
+
+    stackPie : (filterIndex) ->
+
 
       newPies = []
+      [currentFilter, currentDescriptor] = @getFilterFunctions(filterIndex)
 
-      for eachPie in _.last(@layers)
-        pies = eachPie.stackPie(@data.filterFunctions.age)
-        newPies = newPies.concat(pies)
+      if currentFilter
 
-      @layers.push(newPies)
-      
-      @updatePosition()
+        for eachPie in _.last(@layers)
+          pies = eachPie.stackPie(currentFilter, currentDescriptor)
+          newPies = newPies.concat(pies)
+
+        @layers.push(newPies)
+        
+        @updatePosition()
 
       return @
 
     unstackPie: ->
 
-      for eachPie in _.last(@layers)
+      if @layers.length > 1
 
-        eachPie.remove()
+        for eachPie in _.last(@layers)
 
-      @layers = @layers.slice(0, -1)
+          eachPie.remove()
 
-      @updatePosition()
+        @layers = @layers.slice(0, -1)
+
+        @updatePosition()
+        @currentFilterIndex--
 
     getBiggestRadius: ->
 
@@ -231,9 +369,27 @@ require(["jquery", "d3.v3", "lodash"],  ->
         #{biggestRadius + marginTop}
       )")
 
+  zoom = ->
+    console.log d3.event.translate, d3.event.scale
+    translate = [d3.event.translate[0] * d3.event.scale, d3.event.translate[1] * d3.event.scale]
+    zoomContainer.attr("transform", "translate(" + translate + ")scale(" + d3.event.scale + ")")
+
+  svg = d3.select("svg")
+  div = d3.select("body").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
+
+  zoomContainer = svg.append("g")
+    .attr("height", 800)
+    .attr("width", 850)
+
+  pieContainer = zoomContainer.append("g")
+
+
+  # zoomContainer
+  #   .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
 
   marginTop = 150
-  pieContainer = d3.select("svg").append("g")
 
   data = {
     entities: [
@@ -295,7 +451,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       gender: (el) ->
 
-        categories = ["male": 0, "female": 1]
+        categories = {"male": 0, "female": 1}
         return categories[el.gender]
       
 
@@ -313,16 +469,33 @@ require(["jquery", "d3.v3", "lodash"],  ->
 
       votedFor: (el) ->
 
-        categories = ["CDU": 0, "FDP": 1, "SPD": 2, "Piraten": 3, "Grüne": 4, "Sonstige", 5]
+        categories = {"CDU": 0, "FDP": 1, "SPD": 2, "Piraten": 3, "Grüne": 4, "Sonstige": 5}
         return categories[el.votedFor]
+
+    },
+
+    descriptors: {
+
+      gender: (index) ->
+
+        categories = ["männlich", "weiblich"]
+        return categories[index]
+      
+
+      age: (index) ->
+
+        categories = ["18 - 30", "30 - 40", "40 - 60", "> 60"]
+        return categories[index] + " Jahre alt"
+
+
+      votedFor: (index) ->
+
+        categories = ["CDU", "FDP", "SPD", "Piraten", "Grüne", "Sonstige"]
+        return categories[index]
 
     }
 
   }
-
-
+  
   infinitePie = new InfinitePie(data)
-  c = new Category()
-
-
 )
