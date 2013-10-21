@@ -1,8 +1,75 @@
 require.config(
-  baseUrl: 'js/libs'
+  baseUrl: 'js'
 )
 
-require(["jquery", "d3.v3", "lodash"],  ->
+require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b, _c, carMakes) ->
+
+  class CarData
+
+    constructor: ->
+
+
+    retrieveData: ->
+
+      @retrieveModels()
+
+    retrieveModels: ->
+
+      year = 2000
+
+      allModels = {}
+
+      for aMake in carMakes.dataset
+        console.log("aMake.make_id",  aMake.make_id)
+        make = aMake.make_id
+        
+
+        $.ajax({"url": "http://www.carqueryapi.com/api/0.3/?callback=data&cmd=getModels&make=#{make}&year=#{year}&sold_in_us=", dataType: "jsonp"})
+          .done( (data) ->
+            
+            console.error("this", data.Models)
+
+            allModels[make] = data.Models
+
+            window.allModels = allModels
+
+          ).fail( ->
+            console.error("error")
+          )
+
+
+      return
+
+
+
+    retrieveManufactors: ->
+
+      # already fetched
+      return
+      interestingCarManufacturers = []
+
+      years = (x for x in [1900..2010] by 10)
+
+      for aYear in years
+
+        $.ajax({"url": "http://www.carqueryapi.com/api/0.3/?callback=data&cmd=getMakes&year=#{aYear}", dataType: "jsonp"})
+          .done( (data) ->
+            # data = [ {make_country : "UK", "make_is_common" : 0, "make_display" : "Acura" } ]
+
+            interestingCarManufacturers[aYear] = []
+            for d in data.Makes
+              if d.make_is_common == "1"
+                interestingCarManufacturers[aYear].push(d)
+
+            console.log aYear, interestingCarManufacturers[aYear]
+
+          ).fail( -> 
+            console.log("error")
+          )
+
+      window.interestingCarManufacturers = interestingCarManufacturers
+
+  (new CarData).retrieveData()
 
   
   getColor = d3.scale.category20c()
