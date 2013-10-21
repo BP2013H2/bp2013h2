@@ -107,7 +107,7 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "f
       # need to adapt some things for the bottom row
       if i < numberOfTeamsPerLine
         yShift = 0
-        yMultiplier = -1 
+        yMultiplier = -1
       else
         yShift = CONDITIONS_RECT_HEIGHT
         yMultiplier = 1
