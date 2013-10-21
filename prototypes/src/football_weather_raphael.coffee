@@ -1,17 +1,21 @@
-require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "football_preprocessor"], (Raphael, underscoreDummy, {dataset}, Preprocessor) ->
+require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2011", "football_weather_data_2012", "football_preprocessor"], (Raphael, underscoreDummy, {dataset2011}, {dataset2012}, Preprocessor) ->
 
-  WIDTH = 1200
+  WIDTH = 1600
   HEIGHT = 1000
-  CONDITIONS_RECT_WIDTH = 500
+  CONDITIONS_RECT_WIDTH = 600
   CONDITIONS_RECT_HEIGHT = 50
   CONDITIONS_RECT_X = 400
   CONDITIONS_RECT_Y = 400
   TEAM_ELLIPSE_RX = 50
   TEAM_ELLIPSE_RY = 25
-  LINE_WIDTH = 50
+  LINE_WIDTH = 30
 
   paper = Raphael("chart", WIDTH, HEIGHT)
-
+  background = paper.rect(0, 0, WIDTH, HEIGHT).attr(
+    "fill": "#eeeeee"
+    "stroke": "#eeeeee"
+  )
+  console.log dataset = dataset2011.concat(dataset2012)
   teamEllipses = []
   conditionRects = []
   percentageLines = []
@@ -23,19 +27,19 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "f
       switch this.hoverType 
         when "condition"
           if this != conditionRects[lineObject.target]
-            lineObject.line.attr("opacity", 0.1)
+            lineObject.line.attr("opacity", 0.07)
         when "condition_text"
           if this.rectIndex != lineObject.target
-            lineObject.line.attr("opacity", 0.1)
+            lineObject.line.attr("opacity", 0.07)
         when "team"
           if this != teamEllipses[lineObject.source]
-            lineObject.line.attr("opacity", 0.1)
+            lineObject.line.attr("opacity", 0.07)
         when "team_text"
           if this.ellipseIndex != lineObject.source
-            lineObject.line.attr("opacity", 0.1)
+            lineObject.line.attr("opacity", 0.07)
         when "line"
           if this != lineObject.line
-            lineObject.line.attr("opacity", 0.1)
+            lineObject.line.attr("opacity", 0.07)
 
   hoverEnd = ->
 
@@ -83,7 +87,7 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "f
 
       ellipseX = (CONDITIONS_RECT_X - 300) + ((i % numberOfTeamsPerLine) * widthPerTeam) + widthPerTeam / 2
       ellipse = paper.ellipse(ellipseX, ellipseY, TEAM_ELLIPSE_RX, TEAM_ELLIPSE_RY)
-      ellipse.attr(fill: "#FFE073", stroke: "#FFC700")
+      ellipse.attr(fill: "#ffffff")
       text = paper.text(ellipseX, ellipseY, team.name)
 
       ellipse.hoverType = "team"
@@ -115,7 +119,7 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "f
       j = 0
       for condition, value of team.conditions
 
-        if value < 0 then continue
+        if value.p < 0 then j++;continue
 
         path = paper.path([
           [
@@ -134,9 +138,12 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "f
           ]
         ])
 
-        deviation = Math.abs(team.p - value) / preprocessor.getMaxValue()
-        color = Raphael.hsl((Math.pow(1 - deviation, 2)) * 120, 100, 50)
-        path.attr({"stroke-width": Math.max(1, Math.pow(deviation, 2) * LINE_WIDTH), "stroke": color})
+        max = preprocessor.getMaxValue()
+        deviation = (team.overall.p - value.p) / max
+        # color relates to positive/negative influence of these conditions
+        color = Raphael.hsl((1 - ((deviation + 1) / 2)) * 120, 100, 50)
+        # line width relates to number of games under these conditions
+        path.attr({"stroke-width": 2 + value.count / team.overall.count * LINE_WIDTH, "stroke": color})
         path.toBack()
         path.hoverType = "line"
         path.hover(hoverStart, hoverEnd)
@@ -151,8 +158,9 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "f
     height = 120
     paper.rect(10, 10, width, height)
       .attr({"fill": "90-#f00:0-#fd0:30-#ff0:50-#df0:70-#0f0:100", "stroke-width": 0.1})
-    paper.text(60 + width, 10, "0% deviation")
-    paper.text(60 + width, 10 + height, "100% deviation")
+    paper.text(70 + width, 10, "max positive influence")
+    paper.text(48 + width, 10 + height / 2, "no deviation")
+    paper.text(71 + width, 10 + height, "max negative influence")
 
 
   preprocessor = new Preprocessor()
@@ -167,5 +175,7 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2012", "f
   drawTeams()
   drawPercentageLines()
   drawLegend()
+
+  background.toBack()
 
 )

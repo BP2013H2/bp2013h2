@@ -1,5 +1,5 @@
 define({
-  dataset: [
+  dataset2012: [
     {"Date":"24.08.2012","HomeTeam":"Dortmund","AwayTeam":"Bremen","FTHG":2,"FTAG":1},
     {"Date":"25.08.2012","HomeTeam":"Augsburg","AwayTeam":"Duesseldorf","FTHG":0,"FTAG":2},
     {"Date":"25.08.2012","HomeTeam":"Frankfurt","AwayTeam":"Leverkusen","FTHG":2,"FTAG":1},
