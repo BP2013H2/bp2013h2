@@ -38,7 +38,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
           x: i * (@WIDTH + @MARGIN)
           y: @HEIGHT
 
-      rects = d3.select("svg").append("g")
+      rects = svg.append("g")
         .selectAll("rect")
         .data(data)
         .enter()
@@ -49,10 +49,10 @@ require(["jquery", "d3.v3", "lodash"],  ->
         .attr("y", (d, i) -> d.position.y )
         .attr("fill", (d, i) -> getColorCategory(i))
         .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
+        
         # .on("mouseup", (d, i) ->
           # this.setAttributeNS(null, "pointer-events", "none");
         # )
-
 
     drag: ->
 
@@ -231,9 +231,16 @@ require(["jquery", "d3.v3", "lodash"],  ->
         #{biggestRadius + marginTop}
       )")
 
+  zoom = ->
+    console.log "gezoomt"
+    svg.attr "transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"
+   
+  svg = d3.select("svg")
+    .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
+    .append("g")
 
   marginTop = 150
-  pieContainer = d3.select("svg").append("g")
+  pieContainer = svg.append("g")
 
   data = {
     entities: [
@@ -319,10 +326,7 @@ require(["jquery", "d3.v3", "lodash"],  ->
     }
 
   }
-
-
+  
   infinitePie = new InfinitePie(data)
   c = new Category()
-
-
 )
