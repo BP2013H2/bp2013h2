@@ -213,6 +213,19 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
       #   "percentages": [0, 10, 90]
       #   }
 
+      newData = []
+
+      i = 0
+
+      while i < @data.entityCategories.length
+        newData.push({
+          "percentage": @data.percentages[i],
+          "entities": @data.entityCategories[i],
+          })
+        i++
+
+      @data = newData
+
       @drawPie()
 
 
@@ -220,14 +233,14 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
 
 
-      pie = d3.layout.pie().value( (d) -> d ).startAngle(@startAngle).endAngle(@endAngle).sort(null)
+      pie = d3.layout.pie().value( (d) -> d.percentage ).startAngle(@startAngle).endAngle(@endAngle).sort(null)
       arc = d3.svg.arc().outerRadius(@outerRadius).innerRadius(@innerRadius)
 
       @pieFn = pie
 
       @arcContainer = pieContainer
         .append("g")
-        .data([@data.percentages])
+        .data([@data])
 
       arcs = @arcContainer
               .selectAll("g.slice")
@@ -248,8 +261,8 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
             # description = "Data description<br/>"
 
             if @attributes.length > 0 
-
-              description = "<ul><li>" + @attributes.slice(1).concat(@descriptor(i)).join(" </li><li> ") + "</li></ul>"
+              caption = @descriptor(d.data.entities[0])
+              description = "<ul><li>" + @attributes.slice(1).concat(caption).join(" </li><li> ") + "</li></ul>"
 
               div.transition()
                  .duration(200)
@@ -281,7 +294,8 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
       partitionedData = []
       percentages = []
 
-      elements = @data.entityCategories[categoryIndex]
+      elements = @data[categoryIndex].entities
+
 
       if !elements or elements.length == 0
         console.error "elements empty?"
@@ -334,7 +348,8 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
         startAngle = d.startAngle
         endAngle = d.endAngle
-        newPie = new Pie(filteredData, descriptorFunction, @attributes.concat(@descriptor(i)), @outerRadius, @outerRadius + @WIDTH, filterIndex, startAngle, endAngle)
+        caption = @descriptor(d.data.entities[0])
+        newPie = new Pie(filteredData, descriptorFunction, @attributes.concat(caption), @outerRadius, @outerRadius + @WIDTH, filterIndex, startAngle, endAngle)
         newPies.push(newPie)
       )
 
@@ -567,7 +582,9 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
   data.filterFunctions = {
 
     popularity: (el) ->
-      parseInt(el.popularity / 100) * 100
+
+      parseInt((el.popularity - 27) / 28.5)
+      # parseInt(el.popularity / 100) * 100
 
     vote_average: (el) ->
       parseInt(el.vote_average)
@@ -588,25 +605,27 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
     popularity: (el) ->
       if el?
-        "Popularity: " + el
+        "Popularity: " + data.filterFunctions.popularity(el)
       else
         "Popularity"
 
     vote_average: (el) ->
       if el?
-        "Average Voting: " + el
+        "Average Voting: " + data.filterFunctions.vote_average(el)
       else
         "Average Voting"
       
     vote_count: (el) ->
       if el?
-        "Vote Count: " + el
+        "Vote Count: " + data.filterFunctions.vote_count(el)
       else
         "Vote Count"
 
     release_date_year: (el) ->
       if el?
-        "Year of Release: " + window.translateFunction[el]
+        # "Year of Release: " +  window.translateFunction[el]
+
+        "Year of Release: " + data.filterFunctions.release_date_year(el)
       else
         "Year of Release"
 
@@ -614,7 +633,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
       months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
       if el?
-        "Month of Release: " + months[el]
+        "Month of Release: " + months[data.filterFunctions.release_date_month(el)]
       else
         "Month of Release"
 
