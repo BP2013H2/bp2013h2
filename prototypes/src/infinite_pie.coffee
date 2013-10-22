@@ -4,6 +4,21 @@ require.config(
 
 require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b, _c, carMakes) ->
 
+
+  colors = [
+   ["#1f77b4", "#3182bd", "#6baed6", "#9ecae1", "#c6dbef"],
+   ["#ff7f0e", "#e6550d", "#fd8d3c", "#fdae6b", "#fdd0a2"],
+   ["#2ca02c", "#31a354", "#74c476", "#a1d99b", "#c7e9c0"],
+   ["#9467bd", "#7b4173", "#a55194", "#ce6dbd", "#de9ed6"],
+   ["#8c564b", "#8c6d31", "#bd9e39", "#e7ba52", "#e7cb94"],
+   ["#7f7f7f", "#636363", "#969696", "#bdbdbd", "#d9d9d9"],
+   ["#bcbd22", "#8c6d31", "#bd9e39", "#e7ba52", "#e7cb94"],
+   ["#17becf", "#9edae5", "#0f7f8a", "#1294a1", "#14a9b8"]
+  ]
+
+
+
+
   class CarData
 
     constructor: ->
@@ -76,6 +91,16 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
   
   getColor = d3.scale.category20c()
   getColorCategory = d3.scale.category10()
+
+  getColor = (c, i=0) ->
+    c = (c + colors.length)% colors.length
+    i = (i + colors[c].length) % colors[c].length
+    return colors[c][i]
+
+  getColorCategory = (c) ->
+    c = (c + colors.length) % colors.length
+    return colors[c][0]
+
   colorIndex = 0
 
   class Category
@@ -157,7 +182,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
 
     WIDTH: 50
 
-    constructor: (@data, @descriptor, @attributes, @innerRadius, @outerRadius, @startAngle = 0, @endAngle = 2 * Math.PI) ->
+    constructor: (@data, @descriptor, @attributes, @innerRadius, @outerRadius, @filterIndex, @startAngle = 0, @endAngle = 2 * Math.PI) ->
       
 
       @used = false      
@@ -218,12 +243,12 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
           )
-          .on("mouseup", (d, i) ->
+          .on("mouseup", (d, i) =>
             infinitePie.unstackPie()
           )
           .transition()
           .attr("d", arc)
-          .attr("fill", (d, i) -> getColor(colorIndex++))
+          .attr("fill", (d, i) => getColor(@filterIndex, i))
 
 
     filterData: (categoryIndex, filterFunction) ->
@@ -264,7 +289,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
       return model
 
 
-    stackPie: (filterFunction, descriptorFunction) ->
+    stackPie: (filterFunction, descriptorFunction, filterIndex) ->
 
       slices = @arcContainer.selectAll("g.slice")
       newPies = []
@@ -275,7 +300,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
 
         startAngle = d.startAngle
         endAngle = d.endAngle
-        newPie = new Pie(filteredData, descriptorFunction, @attributes.concat(@descriptor(i)), @outerRadius, @outerRadius + @WIDTH, startAngle, endAngle)
+        newPie = new Pie(filteredData, descriptorFunction, @attributes.concat(@descriptor(i)), @outerRadius, @outerRadius + @WIDTH, filterIndex, startAngle, endAngle)
         newPies.push(newPie)
       )
 
@@ -305,7 +330,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
         }
 
 
-      @layers = [[new Pie(model, (-> "alle"), [], 50, 100)]]
+      @layers = [[new Pie(model, (-> "alle"), [], 50, 100, -1)]]
       @updatePosition()
 
 
@@ -337,7 +362,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
       if currentFilter
 
         for eachPie in _.last(@layers)
-          pies = eachPie.stackPie(currentFilter, currentDescriptor)
+          pies = eachPie.stackPie(currentFilter, currentDescriptor, filterIndex)
           newPies = newPies.concat(pies)
 
         @layers.push(newPies)
