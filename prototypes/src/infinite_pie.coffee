@@ -16,84 +16,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
    ["#17becf", "#9edae5", "#0f7f8a", "#1294a1", "#14a9b8"]
   ]
 
-
-
-
-  class CarData
-
-    constructor: ->
-
-
-    retrieveData: ->
-
-      @retrieveModels()
-
-    retrieveModels: ->
-
-      year = 2000
-
-      allModels = []
-
-      i = 0
-
-      for aMake in carMakes.dataset
-        console.log("aMake.make_id",  aMake.make_id)
-        make = aMake.make_id
-        
-
-        $.ajax({"url": "http://www.carqueryapi.com/api/0.3/?callback=data&cmd=getModels&make=#{make}&year=#{year}&sold_in_us=", dataType: "jsonp"})
-          .done( (data) ->
-            
-            console.log("this", data.Models)
-
-            allModels[i++] = data.Models
-
-            window.allModels = allModels
-
-          ).fail( ->
-            console.error("error")
-          )
-
-
-      return
-
-
-
-    retrieveManufactors: ->
-
-      # already fetched
-      return
-      interestingCarManufacturers = []
-
-      years = (x for x in [1900..2010] by 10)
-
-      for aYear in years
-
-        $.ajax({"url": "http://www.carqueryapi.com/api/0.3/?callback=data&cmd=getMakes&year=#{aYear}", dataType: "jsonp"})
-          .done( (data) ->
-            # data = [ {make_country : "UK", "make_is_common" : 0, "make_display" : "Acura" } ]
-
-            interestingCarManufacturers[aYear] = []
-            for d in data.Makes
-              if d.make_is_common == "1"
-                interestingCarManufacturers[aYear].push(d)
-
-            console.log aYear, interestingCarManufacturers[aYear]
-
-          ).fail( -> 
-            console.log("error")
-          )
-
-      window.interestingCarManufacturers = interestingCarManufacturers
-
-  # (new CarData).retrieveData()
-
-
-  console.log("popularMovies", popularMovies)
-  
-  getColor = d3.scale.category20c()
-  getColorCategory = d3.scale.category10()
-
+ 
   getColor = (c, i=0) ->
     c = (c + colors.length)% colors.length
     i = (i + colors[c].length) % colors[c].length
@@ -127,7 +50,6 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
           x: i * (@WIDTH + @MARGIN)
           y: @HEIGHT
 
-      console.log("data", data)
 
       rectGroup = svg.append("g")
       rects = rectGroup
@@ -159,14 +81,11 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
         .text( (d, i) -> d.label )
         .attr("x", (d, i) =>
-          console.log "d", d
           d.position.x + 20
         )
         .attr("y", (d, i) => d.position.y + @HEIGHT / 2 )
         .attr("fill", "#ffffff")
-      # <text x="20" y="20" font-family="sans-serif" font-size="20px" fill="red">Hello!</text>
 
-      console.log "rects", rects
 
     use: (el) ->
 
@@ -204,14 +123,14 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
     constructor: (@data, @descriptor, @attributes, @innerRadius, @outerRadius, @filterIndex, @startAngle = 0, @endAngle = 2 * Math.PI) ->
       
-
       @used = false      
-      # if @data == null
 
-      # @data = {
-      #   "entityCategories": [[], [], []],
-      #   "percentages": [0, 10, 90]
-      #   }
+      @restructureData()
+
+      @drawPie()
+
+
+    restructureData: ->
 
       newData = []
 
@@ -226,12 +145,8 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
       @data = newData
 
-      @drawPie()
-
 
     drawPie: ->
-
-
 
       pie = d3.layout.pie().value( (d) -> d.percentage ).startAngle(@startAngle).endAngle(@endAngle).sort(null)
       arc = d3.svg.arc().outerRadius(@outerRadius).innerRadius(@innerRadius)
@@ -255,10 +170,6 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
             d3.select(this).attr("fill-opacity", 0.8)
           )
           .on("mouseover", (d, i) =>
-            # console.log @
-            # debugger
-
-            # description = "Data description<br/>"
 
             if @attributes.length > 0 
               caption = @descriptor(d.data.entities[0])
@@ -344,8 +255,6 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
       )
 
       return newPies
-
-
 
     remove: ->
 
@@ -440,7 +349,6 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
       )")
 
   zoom = ->
-    console.log d3.event.translate, d3.event.scale
     translate = [d3.event.translate[0] * d3.event.scale, d3.event.translate[1] * d3.event.scale]
     zoomContainer.attr("transform", "translate(" + translate + ")scale(" + d3.event.scale + ")")
 
@@ -461,112 +369,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
   marginTop = 150
 
-  data = {
-    entities: [
-      {name: "Adam", gender: "male", age: 63, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 46, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 39, "votedFor": "FDP"},
-      {name: "Adam", gender: "male", age: 27, "votedFor": "FDP"},
-      {name: "Adam", gender: "male", age: 40, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 63, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 42, "votedFor": "SPD"},
-      {name: "Adam", gender: "male", age: 19, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 25, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 65, "votedFor": "Piraten"},
-      {name: "Adam", gender: "male", age: 86, "votedFor": "CDU"},
-      {name: "Adam", gender: "female", age: 35, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 45, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 51, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 78, "votedFor": "Piraten"},
-      {name: "Adam", gender: "male", age: 38, "votedFor": "Piraten"},
-      {name: "Adam", gender: "male", age: 69, "votedFor": "Grüne"},
-      {name: "Adam", gender: "male", age: 21, "votedFor": "FDP"},
-      {name: "Adam", gender: "male", age: 74, "votedFor": "FDP"},
-      {name: "Adam", gender: "male", age: 86, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 38, "votedFor": "FDP"},
-      {name: "Adam", gender: "male", age: 44, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 20, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 19, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 18, "votedFor": "CDU"},
-      {name: "Adam", gender: "female", age: 23, "votedFor": "CDU"},
-      {name: "Adam", gender: "female", age: 64, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "female", age: 64, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 73, "votedFor": "SPD"},
-      {name: "Adam", gender: "male", age: 60, "votedFor": "CDU"},
-      {name: "Adam", gender: "female", age: 29, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 72, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 75, "votedFor": "CDU"},
-      {name: "Adam", gender: "female", age: 18, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 41, "votedFor": "FDP"},
-      {name: "Adam", gender: "male", age: 45, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 33, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 86, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 23, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 72, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 39, "votedFor": "CDU"},
-      {name: "Adam", gender: "male", age: 29, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 64, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "female", age: 48, "votedFor": "Grüne"},
-      {name: "Adam", gender: "female", age: 24, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 35, "votedFor": "SPD"},
-      {name: "Adam", gender: "female", age: 22, "votedFor": "Piraten"},
-      {name: "Adam", gender: "male", age: 35, "votedFor": "Piraten"},
-      {name: "Adam", gender: "male", age: 35, "votedFor": "FDP"},
-      {name: "Adam", gender: "male", age: 74, "votedFor": "Grüne"},
-      {name: "Adam", gender: "female", age: 27, "votedFor": "Sonstige"},
-      {name: "Adam", gender: "male", age: 79, "votedFor": "Sonstige"}
-    ],
-
-    filterFunctions: {
-
-      gender: (el) ->
-
-        categories = {"male": 0, "female": 1}
-        return categories[el.gender]
-      
-
-      age: (el) ->
-
-        if 18 < el.age < 30
-          0
-        else if el.age < 40
-          1
-        else if el.age < 60
-          2
-        else
-          3
-      
-
-      votedFor: (el) ->
-
-        categories = {"CDU": 0, "FDP": 1, "SPD": 2, "Piraten": 3, "Grüne": 4, "Sonstige": 5}
-        return categories[el.votedFor]
-
-    },
-
-    descriptors: {
-
-      gender: (index) ->
-
-        categories = ["männlich", "weiblich"]
-        return categories[index]
-      
-
-      age: (index) ->
-
-        categories = ["18 - 30", "30 - 40", "40 - 60", "> 60"]
-        return categories[index] + " Jahre alt"
-
-
-      votedFor: (index) ->
-
-        categories = ["CDU", "FDP", "SPD", "Piraten", "Grüne", "Sonstige"]
-        return categories[index]
-
-    }
-
-  }
-
+  data = {}
 
   data.entities = popularMovies.dataset
   data.filterFunctions = {
@@ -574,7 +377,6 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
     popularity: (el) ->
 
       parseInt((el.popularity - 27) / 28.5)
-      # parseInt(el.popularity / 100) * 100
 
     vote_average: (el) ->
       parseInt(el.vote_average)
