@@ -14,7 +14,7 @@ define( ["libs/jquery"], ->
       "Leverkusen": "Bayer Leverkusen"
       "Freiburg": "SC Freiburg"
       "Erlangen": "Greuther Fürth"
-      "Mainz": "SV Mainz"
+      "Mainz": "Mainz 05"
       "Munich": "Bayern München"
       "Hamburg": "Hamburger SV"
       "Nuremberg": "1.FC Nürnberg"
@@ -24,6 +24,9 @@ define( ["libs/jquery"], ->
       "Bottrop": "Schalke 04"
       "Esslingen": "VfB Stuttgart"
       "Wolfsburg": "VfL Wolfsburg"
+      "Cologne": "1.FC Köln"
+      "Berlin": "Hertha BSC"
+      "Kaiserslautern": "1.FC K'lautern"
     }
 
 
@@ -99,7 +102,7 @@ define( ["libs/jquery"], ->
       getPercentage("tempm", "hot", 20, 40)
 
       # maximum value, so we can calculate the deviation and adapt the scale dynamically ;)
-      @maxValue = _.max(_.collect(@percentageData, (team) -> _.max(team.conditions)))
+      @maxValue = _.max(_.collect(@percentageData, (team) -> _.max(_.collect(team.conditions, (c) -> c.p))))
 
       console.log "Percentage data added..."
 
@@ -110,6 +113,8 @@ define( ["libs/jquery"], ->
 
         count = 0
         pOverall = _.reduce(@data, ((sum, game) =>
+          unless game.Weather then return sum
+
           if (
             game["HomeTeam"] == city and
             (not condition or lowerBoundary <= game.Weather[condition] <= upperBoundary)
@@ -133,11 +138,11 @@ define( ["libs/jquery"], ->
         ), 0)
 
         if not condition
-          @percentageData[city]["p"] = pOverall / count
+          @percentageData[city]["overall"] = {p: pOverall / count, count: count}
         else if count and not isNaN(pOverall)
-          @percentageData[city]["conditions"][conditionName] = pOverall / count
+          @percentageData[city]["conditions"][conditionName] = {p: pOverall / count, count: count}
         else
-          @percentageData[city]["conditions"][conditionName] = -1
+          @percentageData[city]["conditions"][conditionName] = {p: -1}
 
 
     getGoalPercentage: (condition, conditionName, lowerBoundary, upperBoundary) ->
@@ -146,6 +151,8 @@ define( ["libs/jquery"], ->
 
         count = 0
         pOverall = _.reduce(@data, ((sum, game) =>
+          unless game.Weather then return sum
+
           if (
             game["HomeTeam"] == city and
             (not condition or lowerBoundary <= game.Weather[condition] <= upperBoundary)
@@ -163,11 +170,11 @@ define( ["libs/jquery"], ->
         ), 0)
 
         if not condition
-          @percentageData[city]["p"] = pOverall / count
+          @percentageData[city]["overall"] = {p: pOverall / count, count: count}
         else if count and not isNaN(pOverall)
-          @percentageData[city]["conditions"][conditionName] = pOverall / count
+          @percentageData[city]["conditions"][conditionName] = {p: pOverall / count, count: count}
         else
-          @percentageData[city]["conditions"][conditionName] = -1
+          @percentageData[city]["conditions"][conditionName] = {p: -1}
 
 
     getPercentageData: ->
