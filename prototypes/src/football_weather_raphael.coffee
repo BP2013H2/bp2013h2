@@ -1,4 +1,11 @@
-require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2010", "football_weather_data_2011", "football_weather_data_2012", "football_preprocessor"], (Raphael, underscoreDummy, {dataset2010}, {dataset2011}, {dataset2012}, Preprocessor) ->
+require([
+  "libs/raphael-min"
+  "libs/lodash.min"
+  "data/football_weather_data_2010"
+  "data/football_weather_data_2011"
+  "data/football_weather_data_2012"
+  "football_preprocessor"
+], (Raphael, underscoreDummy, {dataset2010}, {dataset2011}, {dataset2012}, Preprocessor) ->
 
   WIDTH = 1600
   HEIGHT = 1000
