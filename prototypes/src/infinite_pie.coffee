@@ -281,7 +281,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
           .on("mouseleave", (d, i) ->
             d3.select(this).attr("fill-opacity", 1)
           )
-          .on("mouseup", (d, i) =>
+          .on("dblclick", (d, i) =>
             infinitePie.unstackPie()
           )
           .transition()
@@ -312,16 +312,6 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
           partitionedData[bucketIndex] = [d]
           percentages[bucketIndex] = 1
 
-      # quick and dirty fix
-      if filterFunction({"release_date": "8192"}) == 8192
-        console.warn("creating translateFunction")
-        window.translateFunction = []
-        i = 0
-        while i < partitionedData.length
-          if partitionedData[i]?
-            window.translateFunction.push(i)
-          i++
-      
       partitionedData = _.compact(partitionedData)
       percentages = _.compact(percentages)
 
@@ -466,8 +456,8 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
   pieContainer = zoomContainer.append("g")
 
 
-  # zoomContainer
-  #   .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
+  zoomContainer
+    .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom)).on("dblclick.zoom", null)
 
   marginTop = 150
 
@@ -617,14 +607,13 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
       
     vote_count: (el) ->
       if el?
-        "Vote Count: " + data.filterFunctions.vote_count(el)
+        roundedCount = data.filterFunctions.vote_count(el)
+        "Vote Count: " + roundedCount + " - " + (roundedCount + 100)
       else
         "Vote Count"
 
     release_date_year: (el) ->
       if el?
-        # "Year of Release: " +  window.translateFunction[el]
-
         "Year of Release: " + data.filterFunctions.release_date_year(el)
       else
         "Year of Release"
@@ -633,7 +622,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
       months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
       if el?
-        "Month of Release: " + months[data.filterFunctions.release_date_month(el)]
+        "Month of Release: " + months[data.filterFunctions.release_date_month(el) - 1]
       else
         "Month of Release"
 
