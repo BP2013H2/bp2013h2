@@ -17,7 +17,9 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
 
       year = 2000
 
-      allModels = {}
+      allModels = []
+
+      i = 0
 
       for aMake in carMakes.dataset
         console.log("aMake.make_id",  aMake.make_id)
@@ -27,9 +29,9 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
         $.ajax({"url": "http://www.carqueryapi.com/api/0.3/?callback=data&cmd=getModels&make=#{make}&year=#{year}&sold_in_us=", dataType: "jsonp"})
           .done( (data) ->
             
-            console.error("this", data.Models)
+            console.log("this", data.Models)
 
-            allModels[make] = data.Models
+            allModels[i++] = data.Models
 
             window.allModels = allModels
 
