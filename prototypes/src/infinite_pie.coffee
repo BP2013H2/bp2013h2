@@ -2,7 +2,7 @@ require.config(
   baseUrl: 'js'
 )
 
-require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b, _c, carMakes) ->
+require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/popular_movies"],  (_a, _b, _c, carMakes, popularMovies) ->
 
 
   colors = [
@@ -86,8 +86,10 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
 
       window.interestingCarManufacturers = interestingCarManufacturers
 
-  (new CarData).retrieveData()
+  # (new CarData).retrieveData()
 
+
+  console.log("popularMovies", popularMovies)
   
   getColor = d3.scale.category20c()
   getColorCategory = d3.scale.category10()
@@ -105,7 +107,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
 
   class Category
 
-    WIDTH: 100
+    WIDTH: 150
     HEIGHT: 50
     MARGIN: 25
 
@@ -117,15 +119,18 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
     drawSquare: ->
   
       data = []
-      for k, v of @data.filterFunctions
-        data.push({"label" : k})
+      for k, v of @data.descriptors
+        data.push({"label" : v()})
 
       for d, i in data
         d.position =
           x: i * (@WIDTH + @MARGIN)
           y: @HEIGHT
 
-      rects = svg.append("g")
+      console.log("data", data)
+
+      rectGroup = svg.append("g")
+      rects = rectGroup
         .selectAll("rect")
         .data(data)
         .enter()
@@ -146,6 +151,21 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
         )
         .call(d3.behavior.drag().on("drag", @drag).on("dragend", @dragend))
       
+      rectGroup
+        .selectAll("text")
+        .data(data)
+        .enter()
+        .append("text")
+
+        .text( (d, i) -> d.label )
+        .attr("x", (d, i) =>
+          console.log "d", d
+          d.position.x + 20
+        )
+        .attr("y", (d, i) => d.position.y + @HEIGHT / 2 )
+        .attr("fill", "#ffffff")
+      # <text x="20" y="20" font-family="sans-serif" font-size="20px" fill="red">Hello!</text>
+
       console.log "rects", rects
 
     use: (el) ->
@@ -200,7 +220,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
 
 
 
-      pie = d3.layout.pie().value( (d) -> d ).startAngle(@startAngle).endAngle(@endAngle)
+      pie = d3.layout.pie().value( (d) -> d ).startAngle(@startAngle).endAngle(@endAngle).sort(null)
       arc = d3.svg.arc().outerRadius(@outerRadius).innerRadius(@innerRadius)
 
       @pieFn = pie
@@ -226,14 +246,19 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
             # debugger
 
             # description = "Data description<br/>"
-            description = "<ul><li>" + @attributes.concat(@descriptor(i)).join(" </li><li> ") + "</li></ul>"
 
-            div.transition()
-               .duration(200)
-               .style("opacity", .9)
-            div.html(description)
-               .style("left", (d3.event.pageX) + "px")
-               .style("top", (d3.event.pageY - 28) + "px")
+            if @attributes.length > 0 
+
+              description = "<ul><li>" + @attributes.slice(1).concat(@descriptor(i)).join(" </li><li> ") + "</li></ul>"
+
+              div.transition()
+                 .duration(200)
+                 .style("opacity", .9)
+              div.html(description)
+                 .style("left", (d3.event.pageX) + "px")
+                 .style("top", (d3.event.pageY - 28) + "px")
+            else
+              console.warn "no attributes"
           )
           .on("mouseout", (d) ->
             div.transition()
@@ -273,8 +298,17 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
           partitionedData[bucketIndex] = [d]
           percentages[bucketIndex] = 1
 
+      # quick and dirty fix
+      if filterFunction({"release_date": "8192"}) == 8192
+        console.warn("creating translateFunction")
+        window.translateFunction = []
+        i = 0
+        while i < partitionedData.length
+          if partitionedData[i]?
+            window.translateFunction.push(i)
+          i++
       
-      partitionedData = _.compact(partitionedData) 
+      partitionedData = _.compact(partitionedData)
       percentages = _.compact(percentages)
 
       for aValue, index in percentages
@@ -320,7 +354,10 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
 
       new Category(@data)
 
-      @filterFunctionsToUse = ["age", "gender", "votedFor"]
+      @filterFunctionsToUse = []
+      for k, v of @data.filterFunctions
+        @filterFunctionsToUse.push(k)
+
       @currentFilterIndex = 0
 
 
@@ -330,7 +367,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
         }
 
 
-      @layers = [[new Pie(model, (-> "alle"), [], 50, 100, -1)]]
+      @layers = [[new Pie(model, (-> ""), [], 50, 100, -1)]]
       @updatePosition()
 
 
@@ -362,6 +399,7 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
       if currentFilter
 
         for eachPie in _.last(@layers)
+
           pies = eachPie.stackPie(currentFilter, currentDescriptor, filterIndex)
           newPies = newPies.concat(pies)
 
@@ -521,6 +559,64 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes"],  (_a, _b
         return categories[index]
 
     }
+
+  }
+
+
+  data.entities = popularMovies.dataset
+  data.filterFunctions = {
+
+    popularity: (el) ->
+      parseInt(el.popularity / 100) * 100
+
+    vote_average: (el) ->
+      parseInt(el.vote_average)
+
+    vote_count: (el) ->
+      parseInt(el.vote_count / 100) * 100
+
+    release_date_year: (el) ->
+      parseInt(el.release_date.slice(0, 4))
+
+    release_date_month: (el) ->
+      parseInt(el.release_date.slice(5, 7))
+
+  }
+
+  data.descriptors = {
+
+
+    popularity: (el) ->
+      if el?
+        "Popularity: " + el
+      else
+        "Popularity"
+
+    vote_average: (el) ->
+      if el?
+        "Average Voting: " + el
+      else
+        "Average Voting"
+      
+    vote_count: (el) ->
+      if el?
+        "Vote Count: " + el
+      else
+        "Vote Count"
+
+    release_date_year: (el) ->
+      if el?
+        "Year of Release: " + window.translateFunction[el]
+      else
+        "Year of Release"
+
+    release_date_month: (el) ->
+      months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+      if el?
+        "Month of Release: " + months[el]
+      else
+        "Month of Release"
 
   }
   
