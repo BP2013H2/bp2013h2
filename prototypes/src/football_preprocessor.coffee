@@ -4,7 +4,7 @@ define( ["libs/jquery"], ->
 
     # repo is private so this shouldn't be a problem
     WEATHER_API_KEY: "2f3ae3bff45f8da6"
-    REQUESTS_PER_MIN: 10
+    REQUESTS_PER_MIN: 9
     CITY_TO_TEAM: {
       "Dortmund": "Borussia Dortmund"
       "Bremen": "Werder Bremen"
@@ -27,60 +27,62 @@ define( ["libs/jquery"], ->
       "Cologne": "1.FC Köln"
       "Berlin": "Hertha BSC"
       "Kaiserslautern": "1.FC K'lautern"
+      "Reinbek": "St Pauli"
     }
 
 
     setData: (json) ->
 
       @data = json
+      @weatherDeferred = new $.Deferred()
+      @dataDeferred = new $.Deferred()
 
 
     preprocessData: ->
 
-      unless @data[0]["Weather"]
-        console.log "Querying weather data for #{@data.length} games..."
+      console.log "Querying weather data for #{@data.length} games..."
 
-        # in case anything wents wrong, the already scraped data is available via window.data
-        window.data = @data
-        @weatherDeferred = new $.Deferred()
-        @addWeatherData(0)
-        @weatherDeferred.done( =>
-          console.log "Successfully queried weather data..."
-          @addPercentageData()
-        )
-        return
-
-      console.log "Weather data already present..."
-      @addPercentageData()
+      # in case anything wents wrong, the already scraped data is available via window.data
+      window.data = @data
+      @addWeatherData(0)
+      @weatherDeferred.done( =>
+        console.log "Successfully queried weather data..."
+        @addPercentageData()
+      )
 
 
     addWeatherData: (i) ->
 
       if i >= @data.length
-        console.log JSON.stringify(@data)
         return @weatherDeferred.resolve()
 
-      game = @data[i]
+      unless @data[i].Weather
 
-      console.log "Game", i
+        game = @data[i]
 
-      dateParts = game["Date"].split(".")
-      date = "#{dateParts[2]}#{dateParts[1]}#{dateParts[0]}"
-      
-      cityName = game["HomeTeam"]
+        console.log "Game", i
 
-      $.ajax({
-        url: "http://api.wunderground.com/api/#{@WEATHER_API_KEY}/history_#{date}/q/Germany/#{cityName}.json"
-        dataType: "jsonp"
-      }).done( (d) ->
-        if d?.history?.observations?
-          # preferrably take the weather at 4pm, if that doesn't exist just get any time
-          game["Weather"] = 
-            _.find(d.history.observations, (o) -> o.date.hour == "16") or 
-            _.find(d.history.observations, (o) -> o.date.hour)
-      )
+        dateParts = game["Date"].split(".")
+        date = "#{dateParts[2]}#{dateParts[1]}#{dateParts[0]}"
 
-      setTimeout((=> @addWeatherData(++i)), 60000 / @REQUESTS_PER_MIN)
+        cityName = game["HomeTeam"]
+
+        $.ajax({
+          url: "http://api.wunderground.com/api/#{@WEATHER_API_KEY}/history_#{date}/q/Germany/#{cityName}.json"
+          dataType: "jsonp"
+        }).done( (d) ->
+          if d?.history?.observations?
+            # preferrably take the weather at 4pm, if that doesn't exist just get any time
+            game["Weather"] =
+              _.find(d.history.observations, (o) -> o.date.hour == "16") or
+              _.find(d.history.observations, (o) -> o.date.hour)
+        )
+
+        setTimeout((=> @addWeatherData(++i)), 60000 / @REQUESTS_PER_MIN)
+
+      else
+
+        @addWeatherData(++i)
 
 
     addPercentageData: ->
@@ -105,6 +107,8 @@ define( ["libs/jquery"], ->
       @maxValue = _.max(_.collect(@percentageData, (team) -> _.max(_.collect(team.conditions, (c) -> c.p))))
 
       console.log "Percentage data added..."
+
+      @dataDeferred.resolve(@percentageData)
 
 
     getWinPercentage: (condition, conditionName, lowerBoundary, upperBoundary) ->
@@ -179,7 +183,7 @@ define( ["libs/jquery"], ->
 
     getPercentageData: ->
 
-      @percentageData
+      @dataDeferred.promise()
 
 
     getMaxValue: ->
