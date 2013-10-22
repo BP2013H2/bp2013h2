@@ -1,4 +1,4 @@
-require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2011", "football_weather_data_2012", "football_preprocessor"], (Raphael, underscoreDummy, {dataset2011}, {dataset2012}, Preprocessor) ->
+require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2010", "football_weather_data_2011", "football_weather_data_2012", "football_preprocessor"], (Raphael, underscoreDummy, {dataset2010}, {dataset2011}, {dataset2012}, Preprocessor) ->
 
   WIDTH = 1600
   HEIGHT = 1000
@@ -15,7 +15,7 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2011", "f
     "fill": "#eeeeee"
     "stroke": "#eeeeee"
   )
-  console.log dataset = dataset2011.concat(dataset2012)
+  console.log dataset = dataset2010.concat(dataset2011.concat(dataset2012))
   teamEllipses = []
   conditionRects = []
   percentageLines = []
@@ -141,7 +141,8 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2011", "f
         max = preprocessor.getMaxValue()
         deviation = (team.overall.p - value.p) / max
         # color relates to positive/negative influence of these conditions
-        color = Raphael.hsl((1 - ((deviation + 1) / 2)) * 120, 100, 50)
+        # HACK : fixme, deviation * 2 to get more distinguishable colors
+        color = Raphael.hsl((1 - ((deviation * 2 + 1) / 2)) * 120, 100, 50)
         # line width relates to number of games under these conditions
         path.attr({"stroke-width": 2 + value.count / team.overall.count * LINE_WIDTH, "stroke": color})
         path.toBack()
@@ -167,15 +168,20 @@ require(["libs/raphael-min", "libs/lodash.min", "football_weather_data_2011", "f
   preprocessor.setData(dataset)
   preprocessor.preprocessData()
 
-  data = preprocessor.getPercentageData()
+  data = null
+  dataPromise = preprocessor.getPercentageData()
+  dataPromise.done( (d) =>
 
-  console.debug "Dataset:", data
+    data = d
+    console.debug "Dataset:", data
 
-  drawConditionRects()
-  drawTeams()
-  drawPercentageLines()
-  drawLegend()
+    drawConditionRects()
+    drawTeams()
+    drawPercentageLines()
+    drawLegend()
 
-  background.toBack()
+    background.toBack()
+
+  )
 
 )
