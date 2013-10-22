@@ -170,6 +170,17 @@ require([
     paper.text(48 + width, 10 + height / 2, "no deviation")
     paper.text(71 + width, 10 + height, "max negative influence")
 
+    y = 30
+    width = 120
+    height = 0.8 * LINE_WIDTH
+    paper.rect(300, y, width, height).attr({"fill": "#ffff00", "stroke-width": 0.1})
+    paper.text(300 + width / 2, y + 10 + height, "many matches")
+
+    y = y + height + 40
+    width = 120
+    height = 0.2 * LINE_WIDTH
+    paper.rect(300, 10 + y, width, height).attr({"fill": "#ffff00", "stroke-width": 0.1})
+    paper.text(300 + width / 2, 20 + y + height, "few matches")
 
   preprocessor = new Preprocessor()
   preprocessor.setData(dataset)
