@@ -18,8 +18,10 @@ require(["libs/jquery", "libs/d3.v3", "libs/lodash", "data/car_makes", "data/pop
 
  
   getColor = (c, i=0) ->
-    c = (c + colors.length)% colors.length
+    c = (c + colors.length) % colors.length
     i = (i + colors[c].length) % colors[c].length
+    if i == 0
+      i = Math.floor(colors[c].length * Math.random())
     return colors[c][i]
 
   getColorCategory = (c) ->
