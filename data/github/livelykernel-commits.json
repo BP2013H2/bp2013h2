@@ -1,0 +1,1887 @@
+
+[
+  {
+    "sha": "20de7389ed887cfc512cf422ccc835fdffd2e787",
+    "commit": {
+      "author": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T21:17:24Z"
+      },
+      "committer": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T21:17:24Z"
+      },
+      "message": "some changesets fixes plus added browse references to text selections",
+      "tree": {
+        "sha": "cbf145cd3e313afc68a7f6de6232d06e1fed3e99",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/cbf145cd3e313afc68a7f6de6232d06e1fed3e99"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/20de7389ed887cfc512cf422ccc835fdffd2e787",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/20de7389ed887cfc512cf422ccc835fdffd2e787",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/20de7389ed887cfc512cf422ccc835fdffd2e787",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/20de7389ed887cfc512cf422ccc835fdffd2e787/comments",
+    "author": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b61245e808879c5ea07cc5940edd24a814d76772",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b61245e808879c5ea07cc5940edd24a814d76772",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/b61245e808879c5ea07cc5940edd24a814d76772"
+      }
+    ]
+  },
+  {
+    "sha": "b61245e808879c5ea07cc5940edd24a814d76772",
+    "commit": {
+      "author": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T14:21:12Z"
+      },
+      "committer": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T14:21:35Z"
+      },
+      "message": "add BuildSpec as a requirement for changesets",
+      "tree": {
+        "sha": "3ea7b183256102627214d38d08984edd00bd91ac",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/3ea7b183256102627214d38d08984edd00bd91ac"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/b61245e808879c5ea07cc5940edd24a814d76772",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b61245e808879c5ea07cc5940edd24a814d76772",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/b61245e808879c5ea07cc5940edd24a814d76772",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b61245e808879c5ea07cc5940edd24a814d76772/comments",
+    "author": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6b6b94bd4c19a23376566de0031eda6a089d9a4f",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/6b6b94bd4c19a23376566de0031eda6a089d9a4f",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/6b6b94bd4c19a23376566de0031eda6a089d9a4f"
+      }
+    ]
+  },
+  {
+    "sha": "6b6b94bd4c19a23376566de0031eda6a089d9a4f",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-11T10:15:28Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-11T10:15:42Z"
+      },
+      "message": "layouting: #setLayouter support layouter.type (\"tiling\", \"vertical\", \"horizontal\")",
+      "tree": {
+        "sha": "3db0c4b192c5c017a5b1f3351f516f25a97b628b",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/3db0c4b192c5c017a5b1f3351f516f25a97b628b"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/6b6b94bd4c19a23376566de0031eda6a089d9a4f",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/6b6b94bd4c19a23376566de0031eda6a089d9a4f",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/6b6b94bd4c19a23376566de0031eda6a089d9a4f",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/6b6b94bd4c19a23376566de0031eda6a089d9a4f/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a"
+      }
+    ]
+  },
+  {
+    "sha": "0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-11T10:14:41Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-11T10:15:42Z"
+      },
+      "message": "texteditor: direct open, returns editor",
+      "tree": {
+        "sha": "af9584a83905157764f9d73332d290230d07bc05",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/af9584a83905157764f9d73332d290230d07bc05"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0cb9d24b80bea63e93fdad46bcf81d4a9b26a95a/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "03231152e28ffa1dc19089441fa5df7080ac15e8",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/03231152e28ffa1dc19089441fa5df7080ac15e8",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/03231152e28ffa1dc19089441fa5df7080ac15e8"
+      }
+    ]
+  },
+  {
+    "sha": "03231152e28ffa1dc19089441fa5df7080ac15e8",
+    "commit": {
+      "author": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T05:36:25Z"
+      },
+      "committer": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T05:36:25Z"
+      },
+      "message": "fix test breakage plus add world path to key",
+      "tree": {
+        "sha": "0c87ca64e5e07de5d470027c25eb387388a45bab",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/0c87ca64e5e07de5d470027c25eb387388a45bab"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/03231152e28ffa1dc19089441fa5df7080ac15e8",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/03231152e28ffa1dc19089441fa5df7080ac15e8",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/03231152e28ffa1dc19089441fa5df7080ac15e8",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/03231152e28ffa1dc19089441fa5df7080ac15e8/comments",
+    "author": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "eee027e7375f371361509412c3c4625bac9a1790",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/eee027e7375f371361509412c3c4625bac9a1790",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/eee027e7375f371361509412c3c4625bac9a1790"
+      }
+    ]
+  },
+  {
+    "sha": "eee027e7375f371361509412c3c4625bac9a1790",
+    "commit": {
+      "author": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T04:58:52Z"
+      },
+      "committer": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T05:05:54Z"
+      },
+      "message": "next iteration for changesets; turn them on by default",
+      "tree": {
+        "sha": "33b526abb3e6e88faa2b0a2861ab4e94dbea9314",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/33b526abb3e6e88faa2b0a2861ab4e94dbea9314"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/eee027e7375f371361509412c3c4625bac9a1790",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/eee027e7375f371361509412c3c4625bac9a1790",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/eee027e7375f371361509412c3c4625bac9a1790",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/eee027e7375f371361509412c3c4625bac9a1790/comments",
+    "author": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "784d9f916d0e9be105a5aa989e3fa386176471d1",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/784d9f916d0e9be105a5aa989e3fa386176471d1",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/784d9f916d0e9be105a5aa989e3fa386176471d1"
+      }
+    ]
+  },
+  {
+    "sha": "784d9f916d0e9be105a5aa989e3fa386176471d1",
+    "commit": {
+      "author": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T04:41:27Z"
+      },
+      "committer": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-11T05:05:54Z"
+      },
+      "message": "fix some typos in Layout",
+      "tree": {
+        "sha": "d401d9b309a25691c4fab7bcbcebef5ea4ecbbf2",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/d401d9b309a25691c4fab7bcbcebef5ea4ecbbf2"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/784d9f916d0e9be105a5aa989e3fa386176471d1",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/784d9f916d0e9be105a5aa989e3fa386176471d1",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/784d9f916d0e9be105a5aa989e3fa386176471d1",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/784d9f916d0e9be105a5aa989e3fa386176471d1/comments",
+    "author": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "fae3c7b9f46f92b896f0aad20e01554f60ebfe8f",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/fae3c7b9f46f92b896f0aad20e01554f60ebfe8f",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/fae3c7b9f46f92b896f0aad20e01554f60ebfe8f"
+      }
+    ]
+  },
+  {
+    "sha": "fae3c7b9f46f92b896f0aad20e01554f60ebfe8f",
+    "commit": {
+      "author": {
+        "name": "Aran Lunzer",
+        "email": "aran@acm.org",
+        "date": "2013-11-08T02:22:18Z"
+      },
+      "committer": {
+        "name": "Aran Lunzer",
+        "email": "aran@acm.org",
+        "date": "2013-11-08T02:22:18Z"
+      },
+      "message": "R interface: tweaks to options",
+      "tree": {
+        "sha": "7037a6377f6d59721f98ac926aa8eba4fe1854b3",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/7037a6377f6d59721f98ac926aa8eba4fe1854b3"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/fae3c7b9f46f92b896f0aad20e01554f60ebfe8f",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/fae3c7b9f46f92b896f0aad20e01554f60ebfe8f",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/fae3c7b9f46f92b896f0aad20e01554f60ebfe8f",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/fae3c7b9f46f92b896f0aad20e01554f60ebfe8f/comments",
+    "author": {
+      "login": "aranlunzer",
+      "id": 1386382,
+      "avatar_url": "https://2.gravatar.com/avatar/b05c0d4f0b972f5ee4b0ecb3c85a7f4f?d=https%3A%2F%2Fidenticons.github.com%2F0718a6093853dc7f4aa8e8166588e5a4.png&r=x",
+      "gravatar_id": "b05c0d4f0b972f5ee4b0ecb3c85a7f4f",
+      "url": "https://api.github.com/users/aranlunzer",
+      "html_url": "https://github.com/aranlunzer",
+      "followers_url": "https://api.github.com/users/aranlunzer/followers",
+      "following_url": "https://api.github.com/users/aranlunzer/following{/other_user}",
+      "gists_url": "https://api.github.com/users/aranlunzer/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/aranlunzer/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/aranlunzer/subscriptions",
+      "organizations_url": "https://api.github.com/users/aranlunzer/orgs",
+      "repos_url": "https://api.github.com/users/aranlunzer/repos",
+      "events_url": "https://api.github.com/users/aranlunzer/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/aranlunzer/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "aranlunzer",
+      "id": 1386382,
+      "avatar_url": "https://2.gravatar.com/avatar/b05c0d4f0b972f5ee4b0ecb3c85a7f4f?d=https%3A%2F%2Fidenticons.github.com%2F0718a6093853dc7f4aa8e8166588e5a4.png&r=x",
+      "gravatar_id": "b05c0d4f0b972f5ee4b0ecb3c85a7f4f",
+      "url": "https://api.github.com/users/aranlunzer",
+      "html_url": "https://github.com/aranlunzer",
+      "followers_url": "https://api.github.com/users/aranlunzer/followers",
+      "following_url": "https://api.github.com/users/aranlunzer/following{/other_user}",
+      "gists_url": "https://api.github.com/users/aranlunzer/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/aranlunzer/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/aranlunzer/subscriptions",
+      "organizations_url": "https://api.github.com/users/aranlunzer/orgs",
+      "repos_url": "https://api.github.com/users/aranlunzer/repos",
+      "events_url": "https://api.github.com/users/aranlunzer/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/aranlunzer/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "02d6724ae1e3b757f6bf5a43c039110465007073",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/02d6724ae1e3b757f6bf5a43c039110465007073",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/02d6724ae1e3b757f6bf5a43c039110465007073"
+      }
+    ]
+  },
+  {
+    "sha": "02d6724ae1e3b757f6bf5a43c039110465007073",
+    "commit": {
+      "author": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-07T21:30:32Z"
+      },
+      "committer": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-07T21:30:59Z"
+      },
+      "message": "many changesets fixes and features; also more complete coverage (included layers and various other containers)",
+      "tree": {
+        "sha": "199462c3ce4039c0dc1d44c7246b6429329dbada",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/199462c3ce4039c0dc1d44c7246b6429329dbada"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/02d6724ae1e3b757f6bf5a43c039110465007073",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/02d6724ae1e3b757f6bf5a43c039110465007073",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/02d6724ae1e3b757f6bf5a43c039110465007073",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/02d6724ae1e3b757f6bf5a43c039110465007073/comments",
+    "author": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b5f6748bb4220ae29e828b0345674873a3f1b699",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b5f6748bb4220ae29e828b0345674873a3f1b699",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/b5f6748bb4220ae29e828b0345674873a3f1b699"
+      }
+    ]
+  },
+  {
+    "sha": "b5f6748bb4220ae29e828b0345674873a3f1b699",
+    "commit": {
+      "author": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-07T21:26:49Z"
+      },
+      "committer": {
+        "name": "Florin Mateoc",
+        "email": "fmateoc@gmail.com",
+        "date": "2013-11-07T21:30:59Z"
+      },
+      "message": "fix several issues with lists and added option for multiple selections to mean no individual selection",
+      "tree": {
+        "sha": "b2f45f43895e5a562b3cddc72446c89b26c5aec4",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/b2f45f43895e5a562b3cddc72446c89b26c5aec4"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/b5f6748bb4220ae29e828b0345674873a3f1b699",
+      "comment_count": 1
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b5f6748bb4220ae29e828b0345674873a3f1b699",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/b5f6748bb4220ae29e828b0345674873a3f1b699",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b5f6748bb4220ae29e828b0345674873a3f1b699/comments",
+    "author": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "fmateoc",
+      "id": 5225593,
+      "avatar_url": "https://0.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
+      "url": "https://api.github.com/users/fmateoc",
+      "html_url": "https://github.com/fmateoc",
+      "followers_url": "https://api.github.com/users/fmateoc/followers",
+      "following_url": "https://api.github.com/users/fmateoc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fmateoc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fmateoc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fmateoc/subscriptions",
+      "organizations_url": "https://api.github.com/users/fmateoc/orgs",
+      "repos_url": "https://api.github.com/users/fmateoc/repos",
+      "events_url": "https://api.github.com/users/fmateoc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fmateoc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "8affa59e4fbf930dfd5feef07e1e9fa6883afeda",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/8affa59e4fbf930dfd5feef07e1e9fa6883afeda",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/8affa59e4fbf930dfd5feef07e1e9fa6883afeda"
+      }
+    ]
+  },
+  {
+    "sha": "8affa59e4fbf930dfd5feef07e1e9fa6883afeda",
+    "commit": {
+      "author": {
+        "name": "Philipp Otto",
+        "email": "philippotto@users.noreply.github.com",
+        "date": "2013-11-07T16:00:26Z"
+      },
+      "committer": {
+        "name": "Philipp Otto",
+        "email": "philippotto@users.noreply.github.com",
+        "date": "2013-11-07T16:00:26Z"
+      },
+      "message": "Update .travis.yml\n\nAdd members of HPI BP2013H2 bachelor project",
+      "tree": {
+        "sha": "6c7514c7b671a696dd029a243cc586aa56c299fe",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/6c7514c7b671a696dd029a243cc586aa56c299fe"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/8affa59e4fbf930dfd5feef07e1e9fa6883afeda",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/8affa59e4fbf930dfd5feef07e1e9fa6883afeda",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/8affa59e4fbf930dfd5feef07e1e9fa6883afeda",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/8affa59e4fbf930dfd5feef07e1e9fa6883afeda/comments",
+    "author": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://2.gravatar.com/avatar/563b46cfb16c3da24405c64b9825ea70?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "563b46cfb16c3da24405c64b9825ea70",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://2.gravatar.com/avatar/563b46cfb16c3da24405c64b9825ea70?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "563b46cfb16c3da24405c64b9825ea70",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0e57b44dff789463f05f6691da769d5d43daa150",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0e57b44dff789463f05f6691da769d5d43daa150",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/0e57b44dff789463f05f6691da769d5d43daa150"
+      }
+    ]
+  },
+  {
+    "sha": "0e57b44dff789463f05f6691da769d5d43daa150",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-07T00:10:00Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-07T00:10:00Z"
+      },
+      "message": "adding objects DB (objects.sqlite) to .girignore",
+      "tree": {
+        "sha": "65a86738608c07a85b36c9dcedd8f09d413cf792",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/65a86738608c07a85b36c9dcedd8f09d413cf792"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/0e57b44dff789463f05f6691da769d5d43daa150",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0e57b44dff789463f05f6691da769d5d43daa150",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/0e57b44dff789463f05f6691da769d5d43daa150",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0e57b44dff789463f05f6691da769d5d43daa150/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "1fad68c8f0d844ee040090f7b523754c9b4cc9e4",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/1fad68c8f0d844ee040090f7b523754c9b4cc9e4",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/1fad68c8f0d844ee040090f7b523754c9b4cc9e4"
+      }
+    ]
+  },
+  {
+    "sha": "1fad68c8f0d844ee040090f7b523754c9b4cc9e4",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-06T23:28:34Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-06T23:28:49Z"
+      },
+      "message": "repo subserver fix \"async\" dependency",
+      "tree": {
+        "sha": "16632a22785f3122e266320f9a52ecf78fc9db3a",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/16632a22785f3122e266320f9a52ecf78fc9db3a"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/1fad68c8f0d844ee040090f7b523754c9b4cc9e4",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/1fad68c8f0d844ee040090f7b523754c9b4cc9e4",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/1fad68c8f0d844ee040090f7b523754c9b4cc9e4",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/1fad68c8f0d844ee040090f7b523754c9b4cc9e4/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5bd87cfdd27ca610484fc55de61a17a7b08ef2b3",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/5bd87cfdd27ca610484fc55de61a17a7b08ef2b3",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/5bd87cfdd27ca610484fc55de61a17a7b08ef2b3"
+      }
+    ]
+  },
+  {
+    "sha": "5bd87cfdd27ca610484fc55de61a17a7b08ef2b3",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T20:35:10Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-05T22:38:54Z"
+      },
+      "message": "prompt dialog fix",
+      "tree": {
+        "sha": "0f370a3c2698072c34bb59c115be2030bbefe9e7",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/0f370a3c2698072c34bb59c115be2030bbefe9e7"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/5bd87cfdd27ca610484fc55de61a17a7b08ef2b3",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/5bd87cfdd27ca610484fc55de61a17a7b08ef2b3",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/5bd87cfdd27ca610484fc55de61a17a7b08ef2b3",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/5bd87cfdd27ca610484fc55de61a17a7b08ef2b3/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "51a0fe274a8083c989bf1fce081d7c1417e551b7",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/51a0fe274a8083c989bf1fce081d7c1417e551b7",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/51a0fe274a8083c989bf1fce081d7c1417e551b7"
+      }
+    ]
+  },
+  {
+    "sha": "51a0fe274a8083c989bf1fce081d7c1417e551b7",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:23:40Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:04Z"
+      },
+      "message": "ide: selection narrwoer focus fix for alt-n action",
+      "tree": {
+        "sha": "52e966b84c35fd94861f9e2d76365600a17fdbc1",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/52e966b84c35fd94861f9e2d76365600a17fdbc1"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/51a0fe274a8083c989bf1fce081d7c1417e551b7",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/51a0fe274a8083c989bf1fce081d7c1417e551b7",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/51a0fe274a8083c989bf1fce081d7c1417e551b7",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/51a0fe274a8083c989bf1fce081d7c1417e551b7/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "1212788a9f2f11ed5031553a938b9853354bf7e8",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/1212788a9f2f11ed5031553a938b9853354bf7e8",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/1212788a9f2f11ed5031553a938b9853354bf7e8"
+      }
+    ]
+  },
+  {
+    "sha": "1212788a9f2f11ed5031553a938b9853354bf7e8",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:23:00Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:04Z"
+      },
+      "message": "fixing MorphicList",
+      "tree": {
+        "sha": "0a2dc7a6843b58aa9979fe5e481f202ed72f96cb",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/0a2dc7a6843b58aa9979fe5e481f202ed72f96cb"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/1212788a9f2f11ed5031553a938b9853354bf7e8",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/1212788a9f2f11ed5031553a938b9853354bf7e8",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/1212788a9f2f11ed5031553a938b9853354bf7e8",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/1212788a9f2f11ed5031553a938b9853354bf7e8/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f"
+      }
+    ]
+  },
+  {
+    "sha": "6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:22:37Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:04Z"
+      },
+      "message": "openWorldCSSEditor interactive command",
+      "tree": {
+        "sha": "7932da1ebbaea822e3bb7fe25eea101869210921",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/7932da1ebbaea822e3bb7fe25eea101869210921"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/6ebfbed5dd0e7b261ec4d44d0b24ddc7c526616f/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "a54ab8e8ec5354e1f1d57665c238ecf0b541fc29",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/a54ab8e8ec5354e1f1d57665c238ecf0b541fc29",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/a54ab8e8ec5354e1f1d57665c238ecf0b541fc29"
+      }
+    ]
+  },
+  {
+    "sha": "a54ab8e8ec5354e1f1d57665c238ecf0b541fc29",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:22:05Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:04Z"
+      },
+      "message": "making WorldCSSEditor a buildspec",
+      "tree": {
+        "sha": "2aadc43aa8a097299e7a6e28fb72cf355cfcb2dd",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/2aadc43aa8a097299e7a6e28fb72cf355cfcb2dd"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/a54ab8e8ec5354e1f1d57665c238ecf0b541fc29",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/a54ab8e8ec5354e1f1d57665c238ecf0b541fc29",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/a54ab8e8ec5354e1f1d57665c238ecf0b541fc29",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/a54ab8e8ec5354e1f1d57665c238ecf0b541fc29/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "26430cbaa4f391501c9553aeff4d427856b24502",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/26430cbaa4f391501c9553aeff4d427856b24502",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/26430cbaa4f391501c9553aeff4d427856b24502"
+      }
+    ]
+  },
+  {
+    "sha": "26430cbaa4f391501c9553aeff4d427856b24502",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:21:01Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:04Z"
+      },
+      "message": "text: fix textShadow emphasis",
+      "tree": {
+        "sha": "fb97b134af10b5de404758022e77783bfdfffbf4",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/fb97b134af10b5de404758022e77783bfdfffbf4"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/26430cbaa4f391501c9553aeff4d427856b24502",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/26430cbaa4f391501c9553aeff4d427856b24502",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/26430cbaa4f391501c9553aeff4d427856b24502",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/26430cbaa4f391501c9553aeff4d427856b24502/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b"
+      }
+    ]
+  },
+  {
+    "sha": "dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:20:34Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:03Z"
+      },
+      "message": "css: adding .vertically-centered class as a way to center text labels",
+      "tree": {
+        "sha": "d8eb219c50865eaed8b262cea240301c17a400b4",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/d8eb219c50865eaed8b262cea240301c17a400b4"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/dcfd88dff14ef92a2d6ab6cb25b7fcafc00d259b/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0538dbc0761c2f07339bbae16736837ddd498c6b",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0538dbc0761c2f07339bbae16736837ddd498c6b",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/0538dbc0761c2f07339bbae16736837ddd498c6b"
+      }
+    ]
+  },
+  {
+    "sha": "0538dbc0761c2f07339bbae16736837ddd498c6b",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-04T22:17:50Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:03Z"
+      },
+      "message": "selection narrower: scrolling via mouse wheel events",
+      "tree": {
+        "sha": "f8173a3053f22667a15735779aee19314623fa68",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/f8173a3053f22667a15735779aee19314623fa68"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/0538dbc0761c2f07339bbae16736837ddd498c6b",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0538dbc0761c2f07339bbae16736837ddd498c6b",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/0538dbc0761c2f07339bbae16736837ddd498c6b",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/0538dbc0761c2f07339bbae16736837ddd498c6b/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab"
+      }
+    ]
+  },
+  {
+    "sha": "91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-04T22:17:12Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-05T22:24:03Z"
+      },
+      "message": "codeeditor: interactive command -- remove duplicate lines / uniq",
+      "tree": {
+        "sha": "69d62269f033e1fc56b0c37165f3f3bc376487b4",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/69d62269f033e1fc56b0c37165f3f3bc376487b4"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/91caad3259bd07927cc3a53ad5cbbe5f58e0d8ab/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "14db59814e51ee597b041f5506fc36c94e04ef29",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/14db59814e51ee597b041f5506fc36c94e04ef29",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/14db59814e51ee597b041f5506fc36c94e04ef29"
+      }
+    ]
+  },
+  {
+    "sha": "14db59814e51ee597b041f5506fc36c94e04ef29",
+    "commit": {
+      "author": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T20:20:19Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T20:20:19Z"
+      },
+      "message": "wiki tool flap: fix alignment",
+      "tree": {
+        "sha": "de78875cf58f403a1c346b84c57a35f557dffea0",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/de78875cf58f403a1c346b84c57a35f557dffea0"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/14db59814e51ee597b041f5506fc36c94e04ef29",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/14db59814e51ee597b041f5506fc36c94e04ef29",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/14db59814e51ee597b041f5506fc36c94e04ef29",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/14db59814e51ee597b041f5506fc36c94e04ef29/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "b3f9ecde06be9fa750d21e2c2ef989f606f5da94",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b3f9ecde06be9fa750d21e2c2ef989f606f5da94",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/b3f9ecde06be9fa750d21e2c2ef989f606f5da94"
+      }
+    ]
+  },
+  {
+    "sha": "b3f9ecde06be9fa750d21e2c2ef989f606f5da94",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-03T19:53:31Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T19:57:00Z"
+      },
+      "message": "fix module dependency",
+      "tree": {
+        "sha": "398ebf8705ed4d2b0e9702c54e00e21bbb3dc355",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/398ebf8705ed4d2b0e9702c54e00e21bbb3dc355"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/b3f9ecde06be9fa750d21e2c2ef989f606f5da94",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b3f9ecde06be9fa750d21e2c2ef989f606f5da94",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/b3f9ecde06be9fa750d21e2c2ef989f606f5da94",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/b3f9ecde06be9fa750d21e2c2ef989f606f5da94/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "858e4c89bca9bc5c162234e088ef88bc57b33304",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/858e4c89bca9bc5c162234e088ef88bc57b33304",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/858e4c89bca9bc5c162234e088ef88bc57b33304"
+      }
+    ]
+  },
+  {
+    "sha": "858e4c89bca9bc5c162234e088ef88bc57b33304",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-03T19:53:03Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T19:56:59Z"
+      },
+      "message": "codeeditor: fixing setSelectionRange on un-rendered editors",
+      "tree": {
+        "sha": "3b86a87a8d4505c87698edc4711736805ae915c7",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/3b86a87a8d4505c87698edc4711736805ae915c7"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/858e4c89bca9bc5c162234e088ef88bc57b33304",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/858e4c89bca9bc5c162234e088ef88bc57b33304",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/858e4c89bca9bc5c162234e088ef88bc57b33304",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/858e4c89bca9bc5c162234e088ef88bc57b33304/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "00182930fbb67f1ec440f316577d2033589000e3",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/00182930fbb67f1ec440f316577d2033589000e3",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/00182930fbb67f1ec440f316577d2033589000e3"
+      }
+    ]
+  },
+  {
+    "sha": "00182930fbb67f1ec440f316577d2033589000e3",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-03T19:56:10Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-03T19:56:31Z"
+      },
+      "message": "haskell: improving ghci eval",
+      "tree": {
+        "sha": "e948d839bbf45c42fef7782f6f985d4dcd0f8ff2",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/e948d839bbf45c42fef7782f6f985d4dcd0f8ff2"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/00182930fbb67f1ec440f316577d2033589000e3",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/00182930fbb67f1ec440f316577d2033589000e3",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/00182930fbb67f1ec440f316577d2033589000e3",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/00182930fbb67f1ec440f316577d2033589000e3/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "bcb6a0a111691219d7395f298b379cb9489b1a8b",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/bcb6a0a111691219d7395f298b379cb9489b1a8b",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/bcb6a0a111691219d7395f298b379cb9489b1a8b"
+      }
+    ]
+  },
+  {
+    "sha": "bcb6a0a111691219d7395f298b379cb9489b1a8b",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-03T19:55:40Z"
+      },
+      "committer": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-03T19:56:31Z"
+      },
+      "message": "codeeditor: extracting modes into modules",
+      "tree": {
+        "sha": "ab2a46a35997a49a5c8a9f8965d5ad68b41c6c92",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/ab2a46a35997a49a5c8a9f8965d5ad68b41c6c92"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/bcb6a0a111691219d7395f298b379cb9489b1a8b",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/bcb6a0a111691219d7395f298b379cb9489b1a8b",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/bcb6a0a111691219d7395f298b379cb9489b1a8b",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/bcb6a0a111691219d7395f298b379cb9489b1a8b/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5333ef45475dfd53cc0b7c05e5536edd93ec3fa2",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/5333ef45475dfd53cc0b7c05e5536edd93ec3fa2",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/5333ef45475dfd53cc0b7c05e5536edd93ec3fa2"
+      }
+    ]
+  },
+  {
+    "sha": "5333ef45475dfd53cc0b7c05e5536edd93ec3fa2",
+    "commit": {
+      "author": {
+        "name": "Robert Krahn",
+        "email": "robert.krahn@gmail.com",
+        "date": "2013-11-03T19:41:34Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T19:41:34Z"
+      },
+      "message": "ide: show loading indicator while opening browse file narrower",
+      "tree": {
+        "sha": "f84e9a7a0318ff303a025659fdee859e835fb3e0",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/f84e9a7a0318ff303a025659fdee859e835fb3e0"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/5333ef45475dfd53cc0b7c05e5536edd93ec3fa2",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/5333ef45475dfd53cc0b7c05e5536edd93ec3fa2",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/5333ef45475dfd53cc0b7c05e5536edd93ec3fa2",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/5333ef45475dfd53cc0b7c05e5536edd93ec3fa2/comments",
+    "author": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": null,
+    "parents": [
+      {
+        "sha": "595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a"
+      }
+    ]
+  },
+  {
+    "sha": "595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a",
+    "commit": {
+      "author": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T19:40:29Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T19:40:29Z"
+      },
+      "message": "dialog: fixing prompt default input",
+      "tree": {
+        "sha": "14707b80edc91bed744b522a5688c0102de0f53a",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/14707b80edc91bed744b522a5688c0102de0f53a"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/595c6af2f6d4f18905a2b9a34eb4a641ec6eb15a/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "97ce47cfdbcebed61cdcb0debf7c290a63dd8622",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/97ce47cfdbcebed61cdcb0debf7c290a63dd8622",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/97ce47cfdbcebed61cdcb0debf7c290a63dd8622"
+      }
+    ]
+  },
+  {
+    "sha": "97ce47cfdbcebed61cdcb0debf7c290a63dd8622",
+    "commit": {
+      "author": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T19:40:26Z"
+      },
+      "committer": {
+        "name": "lively-web",
+        "email": "unknown-user@lively-web.org",
+        "date": "2013-11-03T19:40:26Z"
+      },
+      "message": "fixing wiki tool flap positioning",
+      "tree": {
+        "sha": "d81d903fb54abc8df644b8d7930a6904fd71f94d",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/trees/d81d903fb54abc8df644b8d7930a6904fd71f94d"
+      },
+      "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/git/commits/97ce47cfdbcebed61cdcb0debf7c290a63dd8622",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/97ce47cfdbcebed61cdcb0debf7c290a63dd8622",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/97ce47cfdbcebed61cdcb0debf7c290a63dd8622",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/97ce47cfdbcebed61cdcb0debf7c290a63dd8622/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "229c8c8e31a87f5875b5c1f76d186c67cdac38c9",
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/commits/229c8c8e31a87f5875b5c1f76d186c67cdac38c9",
+        "html_url": "https://github.com/LivelyKernel/LivelyKernel/commit/229c8c8e31a87f5875b5c1f76d186c67cdac38c9"
+      }
+    ]
+  }
+]
