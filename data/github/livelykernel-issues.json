@@ -1,6 +1,793 @@
 
 [
   {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/205",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/205/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/205/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/205/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/205",
+    "id": 23287319,
+    "number": 205,
+    "title": "SCB list click is broken",
+    "user": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-26T01:11:25Z",
+    "updated_at": "2013-11-26T01:11:25Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "[Visit issue world](http://lively-web.org/issues/13-11-25_SCB_list_click_is_broken.html)\r\n\r\nreported by robertkrahn:open a scb and browse to some method. now click into the second pane on the containing object (that is already selected).Expected behavior: the object/class is selectedCurrent behavior: nothing happens, the method is still selected"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/204",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/204/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/204/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/204/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/204",
+    "id": 23067310,
+    "number": 204,
+    "title": "World-based Config",
+    "user": {
+      "login": "mroeder",
+      "id": 160313,
+      "avatar_url": "https://1.gravatar.com/avatar/8353bb6e3e00cd67191c3071a94a6151?d=https%3A%2F%2Fidenticons.github.com%2Fb3f85d6260860622cfba589dd0268ea4.png&r=x",
+      "gravatar_id": "8353bb6e3e00cd67191c3071a94a6151",
+      "url": "https://api.github.com/users/mroeder",
+      "html_url": "https://github.com/mroeder",
+      "followers_url": "https://api.github.com/users/mroeder/followers",
+      "following_url": "https://api.github.com/users/mroeder/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mroeder/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mroeder/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mroeder/subscriptions",
+      "organizations_url": "https://api.github.com/users/mroeder/orgs",
+      "repos_url": "https://api.github.com/users/mroeder/repos",
+      "events_url": "https://api.github.com/users/mroeder/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mroeder/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2013-11-21T13:47:46Z",
+    "updated_at": "2013-11-21T14:57:06Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "While searching through the system for options to set Config settings, I only found the following places: defaultconfig.js, localconfig.js, user config (if user name is set in LivelyStorage) and URL parameters.\r\n\r\nIn (much) older versions we also had the option to set config settings for one page/world only.\r\nEven though it was not used that often, I think it is worth having it again and I have three ideas on how it could be implemented:\r\n\r\n1. Global config\r\nA global option that contains a key (page) -> value (object with overridden options) object. Unfortunately this would not be \"copied\" when saving worlds to a different page.\r\n\r\n2. JavaScript-Tag on page\r\nThis is the way it used to be implemented: A separate JavaScript-tag inside the HTML page that sets the initial Config object.\r\n\r\n3. Linearized Object Graph Extension\r\nAn extension to the linearized object graph so it can contain \"meta information\" like page-/world-based config options.\r\n\r\nVotes and comments are welcome! ;-)"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/203",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/203/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/203/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/203/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/203",
+    "id": 22927384,
+    "number": 203,
+    "title": "14 tests fail under Windows (10 asynchronous)",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/tests",
+        "name": "tests",
+        "color": "02e10c"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-19T16:44:52Z",
+    "updated_at": "2013-11-19T16:44:52Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Under windows the following tests fail (in a clean repository):\r\n\r\n```\r\ntests run: 1267\r\nFAILED\r\nlively.morphic.tests.StyleSheetsHTML.Text>>test01SwitchToStyleSheetStyling\r\n        --> (text-decoration was not properly set via CSS (underline != underline solid rgb(128, 0, 128))\r\nlively.morphic.tests.StyleSheetsHTML.Text>>test02SwitchBackFromStyleSheetStyling\r\n        --> (text-decoration was not properly reset after switching back from CSS text styling (none != none solid rgb(0, 0, 0))\r\nlively.net.tests.SessionTracker.Register>>testRegisterCurrentWorld\r\n        --> Asynchronous test #testRegisterCurrentWorld was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testUnregister\r\n        --> Asynchronous test #testUnregister was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testLostConnectionIsRemoved\r\n        --> Asynchronous test #testLostConnectionIsRemoved was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testLostConnectionIsRemoved\r\n        --> TypeError: Object.keys called on non-object\r\n    at Function.keys (native)\r\n    at Register.eval (eval at <anonymous> (http://localhost:9001/core/lively/bootstrap.js:1:0), <anonymous>:75:45)\r\n    at Function.eval (eval at <anonymous> (http://localhost:9001/core/lively/bootstrap.js:1:0), <anonymous>:493:24)\r\n    at delayed (http://localhost:9001/core/lively/lang/Function.js:33:29\r\nlively.net.tests.SessionTracker.Register>>testAutoReconnectToRestartedServer\r\n        --> Asynchronous test #testAutoReconnectToRestartedServer was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testRemoteEval\r\n        --> Asynchronous test #testRemoteEval was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testCopy\r\n        --> Asynchronous test #testCopy was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testSendAndAnswerMessage\r\n        --> Asynchronous test #testSendAndAnswerMessage was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testReportsLastActivity\r\n        --> (Activity not updated undefined vs undefined\r\nlively.net.tests.SessionTracker.Register>>testMessageRouting\r\n        --> Asynchronous test #testMessageRouting was not done after 1000m\r\nlively.net.tests.SessionTracker.Register>>testGetUsers\r\n        --> Asynchronous test #testGetUsers was not done after 1000m\r\nlively.net.tests.SessionTracker.SessionFederation>>testReconnectServerToServerConnection\r\n        --> Asynchronous test #testReconnectServerToServerConnection was not done after 5000m\r\n14 FAILED\r\n```"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/202",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/202/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/202/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/202/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/202",
+    "id": 22768984,
+    "number": 202,
+    "title": "Add simple hover effects to code browser and other list elements",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-16T00:56:59Z",
+    "updated_at": "2013-11-16T00:56:59Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Give the user some visual feedback when hovering over list items (e.g. in the code browser) so that the current item is highlighted.\r\nThis is already implemented in the context menu of the world. Adding it to the other GUI elements would be more consistent and would feel more responsive."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/201",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/201/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/201/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/201/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/201",
+    "id": 22768983,
+    "number": 201,
+    "title": "Improve behaviour when editing scripts in the Object Editor",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      },
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/discussion",
+        "name": "discussion",
+        "color": "5319e7"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-16T00:56:57Z",
+    "updated_at": "2013-11-16T00:56:57Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "- When creating a new script, \"All Scripts\" in the left pane is still highlighted. I would suggest to add a \"New Script\" item in the left pane even if the user hasn't saved anything. If he decides to discard the new script, the item would be removed from the pane.\r\n- Change behaviour to “rename script” instead of “create new script” when saving a script with a different name. This would be more consistent with the behaviour of the code browser, and seems more intuitive to me.\r\n- Mark unsaved scripts in the left pane. This could be done with a asterisk in the name (e.g. *Script) or by writing the name in italics. The red small square in the top right corner isn't the ideal place in my opinion. This would yield several advantages:\r\n    - When creating a new script and immediately appending it to the left pane, the user would still understand that the script isn't saved anywhere.\r\n    - Since each script-name can be marked as unsaved independently, one could think about making it possible to switch between two unsaved scripts (without being forced to save or discard the current state).\r\n- Hide the \"this.addScript(...)\" wrapper in the scripts contents since it doesn't provide any value to the user."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/200",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/200/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/200/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/200/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/200",
+    "id": 22768981,
+    "number": 200,
+    "title": "Add a splitter/midResizer to the global search window \"ToolTabPane\"",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-16T00:56:54Z",
+    "updated_at": "2013-11-16T00:56:54Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "The global search window “ToolTabPane” (opened per ctrl+shift+f) doesn’t allow to resize the top and bottom pane independently. A “midResizer” should be placed here like in the system browser."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/199",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/199/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/199/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/199/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/199",
+    "id": 22768979,
+    "number": 199,
+    "title": "Make the System Code Browser behave like the Finder from Mac OS X",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      },
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/discussion",
+        "name": "discussion",
+        "color": "5319e7"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-16T00:56:52Z",
+    "updated_at": "2013-11-16T00:56:52Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "When navigating through folders in the System Code Browser, the Browser has got four top views from which only the first view is used.\r\nFor example, the OS X Finder handles this by showing the content to a clicked folder in the next (right) pane. If all four panes are occupied, a new pane would get inserted on the right and the view scrolls to the right (so that the left most pane isn't shown anymore).\r\n\r\nThis has the following advantages:\r\n- the available screen real estate is used more effecient\r\n- the user has a better overview about the folders he browsed through\r\n- navigating multiple levels up gets as easy as clicking on the appropriate pane\r\n\r\nA bonus feature would be to make navigating through the browser possible by using the keyboard-arrows."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/196",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/196/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/196/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/196/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/196",
+    "id": 22768973,
+    "number": 196,
+    "title": "Change standard keyboard shortcuts for jumping-per-word-basis on Windows",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/defect",
+        "name": "defect",
+        "color": "e10c02"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-16T00:56:45Z",
+    "updated_at": "2013-11-16T00:57:55Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Make ctrl+arrow-keys (on mac it is alt+arrow-keys which works) jump on a per-word-basis; ctrl+shift+arrow-keys should select whole words (this is the OS standard behaviour).\r\nThe preferences say that Control-Left is bound to “moveBackwardToMatching”. When changing moveBackwardToMatching (without creating a new shortcut), the standard behaviour of the OS should work automatically.\r\n\r\nThis would partly be resolved by #195 "
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/195",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/195/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/195/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/195/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/195",
+    "id": 22740375,
+    "number": 195,
+    "title": "make keyboard shortcuts in preferences-pane editable",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-15T15:58:03Z",
+    "updated_at": "2013-11-16T00:57:55Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/194",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/194/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/194/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/194/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/194",
+    "id": 22740298,
+    "number": 194,
+    "title": "Improve \"Get halo on...\"-menu",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      },
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/discussion",
+        "name": "discussion",
+        "color": "5319e7"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-15T15:56:53Z",
+    "updated_at": "2013-11-15T15:56:53Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Opening the menu could be simplified by a simple ctrl+rightclick on the desired morph. Then the normla \"get halo on\"-menu would be opened to display a list of all underlying morphs.\r\n\r\nFurthermore, one could highlight the corresponding morph when hovering through the \"get halo on\"-menu."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/193",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/193/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/193/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/193/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/193",
+    "id": 22739928,
+    "number": 193,
+    "title": "No difference between “Browse Senders”, “Browse Implementors” and normal Search ?",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2013-11-15T15:50:45Z",
+    "updated_at": "2013-11-18T04:35:29Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "There doesn’t seem to be difference between “Browse Senders”, “Browse Implementors” and normal Search (with ctrl+shift+f) for any input."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/192",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/192/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/192/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/192/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/192",
+    "id": 22739825,
+    "number": 192,
+    "title": "Fix MagnifierButton in ObjectEditor",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/defect",
+        "name": "defect",
+        "color": "e10c02"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-15T15:49:06Z",
+    "updated_at": "2013-11-15T15:51:12Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "The MagnifierButton behaves very strange when hovering over morphs. Morphs aren't properly uncolored.\r\nClosing the ObjectEditor doesn't leave the \"Magnifier-Mode\".\r\nMoving Morphs which are highlighted leads to the following picture:\r\n\r\n![image](https://f.cloud.github.com/assets/2486553/1551025/295cdf32-4e0d-11e3-888c-3680119cebcf.png)\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/191",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/191/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/191/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/191/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/191",
+    "id": 22739310,
+    "number": 191,
+    "title": "According to the preferences CTRL+T is bound to \"transposeletters\" but it triggers the browser's new-tab-shortcut",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2013-11-15T15:40:23Z",
+    "updated_at": "2013-11-17T02:08:14Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "The preferences say that Control-t is bound to transposeletters, but the browser captures this shortcut to create new tab (on Windows)"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/190",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/190/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/190/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/190/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/190",
+    "id": 22739178,
+    "number": 190,
+    "title": "Right-Click on \"World -> Documentation -> More” opens <server>/documentation/ which yields a “file not found”-error",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/defect",
+        "name": "defect",
+        "color": "e10c02"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-15T15:38:29Z",
+    "updated_at": "2013-11-15T15:51:33Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "only applies for local instances"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/189",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/189/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/189/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/189/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/189",
+    "id": 22739127,
+    "number": 189,
+    "title": "Holding CTRL and dragging the mouse opens halos",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/defect",
+        "name": "defect",
+        "color": "e10c02"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-15T15:37:41Z",
+    "updated_at": "2013-11-15T15:51:12Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "When holding CTRL and dragging the mouse (to create another text selection in the code editor), the mouse-up-event will show the halos of the underlying morphs.\r\nThe halos should only appear if the mouse wasn’t moved between Down- and Up-event."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/188",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/188/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/188/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/188/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/188",
+    "id": 22738919,
+    "number": 188,
+    "title": "Mouse-Up-Event isn't recognized if the mouse isn't released on the same morph",
+    "user": {
+      "login": "philippotto",
+      "id": 2486553,
+      "avatar_url": "https://0.gravatar.com/avatar/17b10073832a0f4a4f92aeafa5f7ea83?d=https%3A%2F%2Fidenticons.github.com%2F239ef25e5a911907784c39aea8f4b943.png&r=x",
+      "gravatar_id": "17b10073832a0f4a4f92aeafa5f7ea83",
+      "url": "https://api.github.com/users/philippotto",
+      "html_url": "https://github.com/philippotto",
+      "followers_url": "https://api.github.com/users/philippotto/followers",
+      "following_url": "https://api.github.com/users/philippotto/following{/other_user}",
+      "gists_url": "https://api.github.com/users/philippotto/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/philippotto/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/philippotto/subscriptions",
+      "organizations_url": "https://api.github.com/users/philippotto/orgs",
+      "repos_url": "https://api.github.com/users/philippotto/repos",
+      "events_url": "https://api.github.com/users/philippotto/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/philippotto/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/defect",
+        "name": "defect",
+        "color": "e10c02"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2013-11-15T15:34:33Z",
+    "updated_at": "2013-11-15T15:51:12Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "This occurs especially often when I try to select code in a CodeEditor starting from the bottom right to the top left (where the top left is a few pixels outside the code editor)\r\n![image](https://f.cloud.github.com/assets/2486553/1550872/35fbdbaa-4e0b-11e3-9959-bc249d81ee16.png)\r\n\r\nThis issue seems to be present only under Windows."
+  },
+  {
     "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/183",
     "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/183/labels{/name}",
     "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/183/comments",
@@ -12,7 +799,7 @@
     "user": {
       "login": "bertfreudenberg",
       "id": 733388,
-      "avatar_url": "https://0.gravatar.com/avatar/2cf3dd6bc0a56573bd8e0c041bc86846?d=https%3A%2F%2Fidenticons.github.com%2F873909d1878f7099c4471c357edd1b0b.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/2cf3dd6bc0a56573bd8e0c041bc86846?d=https%3A%2F%2Fidenticons.github.com%2F873909d1878f7099c4471c357edd1b0b.png&r=x",
       "gravatar_id": "2cf3dd6bc0a56573bd8e0c041bc86846",
       "url": "https://api.github.com/users/bertfreudenberg",
       "html_url": "https://github.com/bertfreudenberg",
@@ -57,7 +844,7 @@
     "user": {
       "login": "fmateoc",
       "id": 5225593,
-      "avatar_url": "https://2.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "avatar_url": "https://1.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
       "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
       "url": "https://api.github.com/users/fmateoc",
       "html_url": "https://github.com/fmateoc",
@@ -102,7 +889,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -147,7 +934,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -192,7 +979,7 @@
     "user": {
       "login": "fmateoc",
       "id": 5225593,
-      "avatar_url": "https://2.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
+      "avatar_url": "https://1.gravatar.com/avatar/70f07f681011977ffa4c4214367ecf31?d=https%3A%2F%2Fidenticons.github.com%2Fe9870591565e57b4878e8670f5ce46fe.png&r=x",
       "gravatar_id": "70f07f681011977ffa4c4214367ecf31",
       "url": "https://api.github.com/users/fmateoc",
       "html_url": "https://github.com/fmateoc",
@@ -237,7 +1024,7 @@
     "user": {
       "login": "aranlunzer",
       "id": 1386382,
-      "avatar_url": "https://1.gravatar.com/avatar/b05c0d4f0b972f5ee4b0ecb3c85a7f4f?d=https%3A%2F%2Fidenticons.github.com%2F0718a6093853dc7f4aa8e8166588e5a4.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/b05c0d4f0b972f5ee4b0ecb3c85a7f4f?d=https%3A%2F%2Fidenticons.github.com%2F0718a6093853dc7f4aa8e8166588e5a4.png&r=x",
       "gravatar_id": "b05c0d4f0b972f5ee4b0ecb3c85a7f4f",
       "url": "https://api.github.com/users/aranlunzer",
       "html_url": "https://github.com/aranlunzer",
@@ -282,7 +1069,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -327,7 +1114,7 @@
     "user": {
       "login": "rickmcgeer",
       "id": 656259,
-      "avatar_url": "https://1.gravatar.com/avatar/4057bddc0c40f0f809473eecc3ce5df5?d=https%3A%2F%2Fidenticons.github.com%2F65d2d4b66e433fa4e93ad9df634ef4b4.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/4057bddc0c40f0f809473eecc3ce5df5?d=https%3A%2F%2Fidenticons.github.com%2F65d2d4b66e433fa4e93ad9df634ef4b4.png&r=x",
       "gravatar_id": "4057bddc0c40f0f809473eecc3ce5df5",
       "url": "https://api.github.com/users/rickmcgeer",
       "html_url": "https://github.com/rickmcgeer",
@@ -372,7 +1159,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -417,7 +1204,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -462,7 +1249,7 @@
     "user": {
       "login": "lauritzthamsen",
       "id": 556044,
-      "avatar_url": "https://2.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
       "gravatar_id": "16ee936c089903268be2b45e2912a8de",
       "url": "https://api.github.com/users/lauritzthamsen",
       "html_url": "https://github.com/lauritzthamsen",
@@ -511,7 +1298,7 @@
     "user": {
       "login": "bastiansteinert",
       "id": 4905369,
-      "avatar_url": "https://0.gravatar.com/avatar/a8bdf695016dd0cb4172a4744167baac?d=https%3A%2F%2Fidenticons.github.com%2Feb01d1f4d99f04f7789d7ab86e2fe89f.png&r=x",
+      "avatar_url": "https://1.gravatar.com/avatar/a8bdf695016dd0cb4172a4744167baac?d=https%3A%2F%2Fidenticons.github.com%2Feb01d1f4d99f04f7789d7ab86e2fe89f.png&r=x",
       "gravatar_id": "a8bdf695016dd0cb4172a4744167baac",
       "url": "https://api.github.com/users/bastiansteinert",
       "html_url": "https://github.com/bastiansteinert",
@@ -556,7 +1343,7 @@
     "user": {
       "login": "lauritzthamsen",
       "id": 556044,
-      "avatar_url": "https://2.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
       "gravatar_id": "16ee936c089903268be2b45e2912a8de",
       "url": "https://api.github.com/users/lauritzthamsen",
       "html_url": "https://github.com/lauritzthamsen",
@@ -605,7 +1392,7 @@
     "user": {
       "login": "lauritzthamsen",
       "id": 556044,
-      "avatar_url": "https://2.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
       "gravatar_id": "16ee936c089903268be2b45e2912a8de",
       "url": "https://api.github.com/users/lauritzthamsen",
       "html_url": "https://github.com/lauritzthamsen",
@@ -654,7 +1441,7 @@
     "user": {
       "login": "lauritzthamsen",
       "id": 556044,
-      "avatar_url": "https://2.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
       "gravatar_id": "16ee936c089903268be2b45e2912a8de",
       "url": "https://api.github.com/users/lauritzthamsen",
       "html_url": "https://github.com/lauritzthamsen",
@@ -703,7 +1490,7 @@
     "user": {
       "login": "lauritzthamsen",
       "id": 556044,
-      "avatar_url": "https://2.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
       "gravatar_id": "16ee936c089903268be2b45e2912a8de",
       "url": "https://api.github.com/users/lauritzthamsen",
       "html_url": "https://github.com/lauritzthamsen",
@@ -752,7 +1539,7 @@
     "user": {
       "login": "lauritzthamsen",
       "id": 556044,
-      "avatar_url": "https://2.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
       "gravatar_id": "16ee936c089903268be2b45e2912a8de",
       "url": "https://api.github.com/users/lauritzthamsen",
       "html_url": "https://github.com/lauritzthamsen",
@@ -806,7 +1593,7 @@
     "user": {
       "login": "lauritzthamsen",
       "id": 556044,
-      "avatar_url": "https://2.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
       "gravatar_id": "16ee936c089903268be2b45e2912a8de",
       "url": "https://api.github.com/users/lauritzthamsen",
       "html_url": "https://github.com/lauritzthamsen",
@@ -855,7 +1642,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -900,7 +1687,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -945,7 +1732,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -994,7 +1781,7 @@
     "user": {
       "login": "levjj",
       "id": 479238,
-      "avatar_url": "https://0.gravatar.com/avatar/b8d88451c50a3aadcf71fcfa6141e3ae?d=https%3A%2F%2Fidenticons.github.com%2F0f7c21083b4d6ae58d7aedf14898bc5a.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/b8d88451c50a3aadcf71fcfa6141e3ae?d=https%3A%2F%2Fidenticons.github.com%2F0f7c21083b4d6ae58d7aedf14898bc5a.png&r=x",
       "gravatar_id": "b8d88451c50a3aadcf71fcfa6141e3ae",
       "url": "https://api.github.com/users/levjj",
       "html_url": "https://github.com/levjj",
@@ -1039,7 +1826,7 @@
     "user": {
       "login": "levjj",
       "id": 479238,
-      "avatar_url": "https://0.gravatar.com/avatar/b8d88451c50a3aadcf71fcfa6141e3ae?d=https%3A%2F%2Fidenticons.github.com%2F0f7c21083b4d6ae58d7aedf14898bc5a.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/b8d88451c50a3aadcf71fcfa6141e3ae?d=https%3A%2F%2Fidenticons.github.com%2F0f7c21083b4d6ae58d7aedf14898bc5a.png&r=x",
       "gravatar_id": "b8d88451c50a3aadcf71fcfa6141e3ae",
       "url": "https://api.github.com/users/levjj",
       "html_url": "https://github.com/levjj",
@@ -1084,7 +1871,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -1196,7 +1983,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -1245,7 +2032,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -1294,7 +2081,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -1384,7 +2171,7 @@
     "user": {
       "login": "rksm",
       "id": 467450,
-      "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
       "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
       "url": "https://api.github.com/users/rksm",
       "html_url": "https://github.com/rksm",
@@ -1415,7 +2202,7 @@
       "creator": {
         "login": "rksm",
         "id": 467450,
-        "avatar_url": "https://0.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+        "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
         "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
         "url": "https://api.github.com/users/rksm",
         "html_url": "https://github.com/rksm",
@@ -1448,5 +2235,461 @@
       "patch_url": null
     },
     "body": "Needs some filtering. So far:\n\nFeatures:\n* lk install (yet to fix)\n\nMinor features:\n* added assertRaises to TestCase\n* added test spies\n* adding date format lib to standard extensions\n* extending #setClipMode: Paramter can either be a string or an object. String: \"visible\", \"hidden\", \"auto\", \"scroll\" Object: should have x and/or y field with a string og the choices above.\n* lively.morphic.createN as a way to optimize the creation of multiple similar morphs. using it for the grid layout\n* better support for serialization debuging: serializer.findIdReferencePathFromToId now prints a proper JS accessor path\n* upload images with dragn-dop + alt pressed\n* native context menu with ctrl + alt + click\n* morph diffing...?\n* text shadows\n* Text interface extensions...?\n    * text morph now supports setFontWeight, setFontStyle, setTextDecoration as getters/setters & in applyStyle\n    * insert methods...?\n* lively.Config improvements, per-user config support, config-url override\n    * reading pre-bootstrap config\n    * usage tracking\n* lively.whenLoaded callback\n* support for creating string tables\n* password input morph\n* SystemConsole for displaying log and error messages in Lively\n* Improved Inspector\n* new morph: lively.morphic.Tree\n\nFixes:\n* optimize grid layout\n* correct mouse pos when world is offseted\n* restore text selection on focus\n* traits applied to objects get serialized\n* fix pasting of richt text\n* DOM selection fixes or FF and Chrome\n* tabindex fix\n* suppress scrollbar click\n* PUT and other methods were sometimes \"cached\" in Chrome\n\nOptimizations\n* array method optimizations"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/37",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/37/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/37/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/37/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/37",
+    "id": 3604793,
+    "number": 37,
+    "title": "How to get specific \"components\" reusable outside of LK",
+    "user": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2012-03-12T00:21:06Z",
+    "updated_at": "2012-03-16T21:42:22Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "So the use case is that we have a awesome framework with lots of cool features like a class system, data bindings, stuff and we want  to make those things reusable without having to pull in the whole Lively package (even if it's just the core, the core is at least currently too big). Also our module system more or less is a problem for that since it would be required if you want to reuse, say, the class system. Plus, you would have to use XHR it's load mechanism which might not be usable in all environments (say, node). Of course we could adapt our modules to different environments (node.js require e.g.) but this is probably another project.\r\n\r\nSo, what JS people usually do is to provide compiled scripts that could just be included (remotely like including jquery from google or via script download & add it locally to your page).\r\n\r\nIdea: Let's have a component interface based on our combinedModules. A request to http://lively-kernel.org/modules/lk-classes.js could for example package the necessary code that is needed just for the class system (we get the requirements via our module definitions) together and make it embedable via `<script src=\"http://lively-kernel.org/modules/lk-classes.js\" /> and downloadable.\r\n\r\nWe could also automatically remove all `module(...)` expressions to just deliver the plain code. So there is no need for \"simulating\" modules like we do it for the combinedModules load process in pur bootstrap (we need that there because there could be modules that are required in the code but are not part of the combinedModules).\r\n\r\n\r\n@fbornhofen @lauritzthamsen @JensLincke please comment. Thx :-)"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/25",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/25/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/25/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/25/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/25",
+    "id": 3379387,
+    "number": 25,
+    "title": "Red/broken test cases excluded from default test runs",
+    "user": {
+      "login": "lauritzthamsen",
+      "id": 556044,
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "gravatar_id": "16ee936c089903268be2b45e2912a8de",
+      "url": "https://api.github.com/users/lauritzthamsen",
+      "html_url": "https://github.com/lauritzthamsen",
+      "followers_url": "https://api.github.com/users/lauritzthamsen/followers",
+      "following_url": "https://api.github.com/users/lauritzthamsen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lauritzthamsen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lauritzthamsen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lauritzthamsen/subscriptions",
+      "organizations_url": "https://api.github.com/users/lauritzthamsen/orgs",
+      "repos_url": "https://api.github.com/users/lauritzthamsen/repos",
+      "events_url": "https://api.github.com/users/lauritzthamsen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lauritzthamsen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/defect",
+        "name": "defect",
+        "color": "e10c02"
+      },
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/refactoring%2Freimplementation",
+        "name": "refactoring/reimplementation",
+        "color": "d7e102"
+      },
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/tests",
+        "name": "tests",
+        "color": "02e10c"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2012-02-24T21:23:07Z",
+    "updated_at": "2012-02-24T21:23:07Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "The default test run for this repository does not run all available test modules as several are red (partly because they rely on the Lively Wiki infrastructure / the Webwerkstatt deployment) or don't return at all. We should remove Wiki-dependent / Webwerkstatt tests from this repository and the [default test run](https://github.com/rksm/LivelyKernel/blob/master/testing/run_tests.js) should incorporate all test modules.\r\n\r\n__Test runs fail / red__\r\n\r\ncop.tests.LayerInliningTests\r\ncop.tests.TracingTests\r\n\r\nlively.tests.ScriptingTests\r\nlively.tests.BootstrapTests\r\nlively.tests.CoreTest\r\nlively.tests.NetworkTest\r\n\r\n__Tests don't run through / test timeout__\r\n\r\nlively.tests.LKWikiTests"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/20",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/20/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/20/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/20/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/20",
+    "id": 3303112,
+    "number": 20,
+    "title": "[tests] Code coverage",
+    "user": {
+      "login": "lauritzthamsen",
+      "id": 556044,
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "gravatar_id": "16ee936c089903268be2b45e2912a8de",
+      "url": "https://api.github.com/users/lauritzthamsen",
+      "html_url": "https://github.com/lauritzthamsen",
+      "followers_url": "https://api.github.com/users/lauritzthamsen/followers",
+      "following_url": "https://api.github.com/users/lauritzthamsen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lauritzthamsen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lauritzthamsen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lauritzthamsen/subscriptions",
+      "organizations_url": "https://api.github.com/users/lauritzthamsen/orgs",
+      "repos_url": "https://api.github.com/users/lauritzthamsen/repos",
+      "events_url": "https://api.github.com/users/lauritzthamsen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lauritzthamsen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2012-02-20T23:50:57Z",
+    "updated_at": "2012-02-28T20:07:50Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "We want Lively's Core to be stable and, therefore, run our tests continuously. Code coverage information would help to identify  not well tested modules and, therefore, would help to get more of the Core into a test harness."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/19",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/19/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/19/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/19/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/19",
+    "id": 3302965,
+    "number": 19,
+    "title": "[WW integration] view and add github issues from Lively",
+    "user": {
+      "login": "lauritzthamsen",
+      "id": 556044,
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "gravatar_id": "16ee936c089903268be2b45e2912a8de",
+      "url": "https://api.github.com/users/lauritzthamsen",
+      "html_url": "https://github.com/lauritzthamsen",
+      "followers_url": "https://api.github.com/users/lauritzthamsen/followers",
+      "following_url": "https://api.github.com/users/lauritzthamsen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lauritzthamsen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lauritzthamsen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lauritzthamsen/subscriptions",
+      "organizations_url": "https://api.github.com/users/lauritzthamsen/orgs",
+      "repos_url": "https://api.github.com/users/lauritzthamsen/repos",
+      "events_url": "https://api.github.com/users/lauritzthamsen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lauritzthamsen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2012-02-20T23:39:09Z",
+    "updated_at": "2012-02-28T20:10:20Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Use the Markdown morph to interface github issues in Lively. Load title, label, and issue description from github, while Lively worlds provide an environment for the reproduction of defects or general examples."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/17",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/17/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/17/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/17/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/17",
+    "id": 3301981,
+    "number": 17,
+    "title": "[Class system] Static / class-side methods through subclass and addMethods",
+    "user": {
+      "login": "lauritzthamsen",
+      "id": 556044,
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "gravatar_id": "16ee936c089903268be2b45e2912a8de",
+      "url": "https://api.github.com/users/lauritzthamsen",
+      "html_url": "https://github.com/lauritzthamsen",
+      "followers_url": "https://api.github.com/users/lauritzthamsen/followers",
+      "following_url": "https://api.github.com/users/lauritzthamsen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lauritzthamsen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lauritzthamsen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lauritzthamsen/subscriptions",
+      "organizations_url": "https://api.github.com/users/lauritzthamsen/orgs",
+      "repos_url": "https://api.github.com/users/lauritzthamsen/repos",
+      "events_url": "https://api.github.com/users/lauritzthamsen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lauritzthamsen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2012-02-20T22:19:36Z",
+    "updated_at": "2012-02-20T23:58:35Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "We add non-instance methods to the Object itself through _Object.extend()_, which does not incorporate method categories. Further, it's not clearly shown as part of the class definition in source files and the SCB. \r\n\r\nWould be in favor of having distinguished class-side methods similar to our instance-side methods through _ addClassMethods()_ and in _subclass()_ definitions. With method categories."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/16",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/16/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/16/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/16/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/16",
+    "id": 3277889,
+    "number": 16,
+    "title": "[text] lively.morphic.tests.TextMorphTests.test05bSetSelectionRangeRightToLeft",
+    "user": {
+      "login": "fbornhofen",
+      "id": 274328,
+      "avatar_url": "https://2.gravatar.com/avatar/8713e9824406116af787010f064bb3c5?d=https%3A%2F%2Fidenticons.github.com%2F5a62595cc222d264b3b59cdee08a9f42.png&r=x",
+      "gravatar_id": "8713e9824406116af787010f064bb3c5",
+      "url": "https://api.github.com/users/fbornhofen",
+      "html_url": "https://github.com/fbornhofen",
+      "followers_url": "https://api.github.com/users/fbornhofen/followers",
+      "following_url": "https://api.github.com/users/fbornhofen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fbornhofen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fbornhofen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fbornhofen/subscriptions",
+      "organizations_url": "https://api.github.com/users/fbornhofen/orgs",
+      "repos_url": "https://api.github.com/users/fbornhofen/repos",
+      "events_url": "https://api.github.com/users/fbornhofen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fbornhofen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/defect",
+        "name": "defect",
+        "color": "e10c02"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2012-02-18T07:02:33Z",
+    "updated_at": "2012-02-18T07:02:33Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Chrome:\r\n\r\n  aText.setSelectionRange(5,2);\r\n  aText.getSelectionRange(); --> [5,2];\r\n\r\nFirefox:\r\n\r\n  aText.setSelectionRange(5,2);\r\n  aText.getSelectionRange(); --> [2,5];\r\n\r\nSwap values if this is Firefox and Text was selected from right to left? Edge cases? People using DOM API?"
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/12",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/12/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/12/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/12/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/12",
+    "id": 3246000,
+    "number": 12,
+    "title": "Too many extensions to Array and Enumerable isn't used elsewhere",
+    "user": {
+      "login": "lauritzthamsen",
+      "id": 556044,
+      "avatar_url": "https://0.gravatar.com/avatar/16ee936c089903268be2b45e2912a8de?d=https%3A%2F%2Fidenticons.github.com%2F0b08e99f86cf27504c52f90ea29374ce.png&r=x",
+      "gravatar_id": "16ee936c089903268be2b45e2912a8de",
+      "url": "https://api.github.com/users/lauritzthamsen",
+      "html_url": "https://github.com/lauritzthamsen",
+      "followers_url": "https://api.github.com/users/lauritzthamsen/followers",
+      "following_url": "https://api.github.com/users/lauritzthamsen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/lauritzthamsen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/lauritzthamsen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/lauritzthamsen/subscriptions",
+      "organizations_url": "https://api.github.com/users/lauritzthamsen/orgs",
+      "repos_url": "https://api.github.com/users/lauritzthamsen/repos",
+      "events_url": "https://api.github.com/users/lauritzthamsen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/lauritzthamsen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/refactoring%2Freimplementation",
+        "name": "refactoring/reimplementation",
+        "color": "d7e102"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2012-02-16T03:42:40Z",
+    "updated_at": "2012-02-16T03:42:40Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "Interface of array feels quite big, with a couple of very similar functions. We even have some aliases...\r\nIf you count the function definitions in lively.lang.Array you'll get ridiculously close to 50...\r\n\r\nAlso, the _Enumerable_ object is created in lively.lang.Array and immediately mixed into the _Array.prototype_. I think that it's not used elsewhere - so we might skip this step as well in an effort to get a smaller Array interface..."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/7",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/7/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/7/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/7/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/7",
+    "id": 3213052,
+    "number": 7,
+    "title": "[tests] Tests should fail if test modules cannot be loaded (syntax errors, etc)",
+    "user": {
+      "login": "fbornhofen",
+      "id": 274328,
+      "avatar_url": "https://2.gravatar.com/avatar/8713e9824406116af787010f064bb3c5?d=https%3A%2F%2Fidenticons.github.com%2F5a62595cc222d264b3b59cdee08a9f42.png&r=x",
+      "gravatar_id": "8713e9824406116af787010f064bb3c5",
+      "url": "https://api.github.com/users/fbornhofen",
+      "html_url": "https://github.com/fbornhofen",
+      "followers_url": "https://api.github.com/users/fbornhofen/followers",
+      "following_url": "https://api.github.com/users/fbornhofen/following{/other_user}",
+      "gists_url": "https://api.github.com/users/fbornhofen/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/fbornhofen/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/fbornhofen/subscriptions",
+      "organizations_url": "https://api.github.com/users/fbornhofen/orgs",
+      "repos_url": "https://api.github.com/users/fbornhofen/repos",
+      "events_url": "https://api.github.com/users/fbornhofen/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/fbornhofen/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2012-02-14T02:27:38Z",
+    "updated_at": "2012-02-15T22:25:45Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "When there are syntax errors in modules, CLI test runner fails with a timeout. It should be able to report syntax errors."
+  },
+  {
+    "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/4",
+    "labels_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/4/labels{/name}",
+    "comments_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/4/comments",
+    "events_url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/issues/4/events",
+    "html_url": "https://github.com/LivelyKernel/LivelyKernel/issues/4",
+    "id": 3211728,
+    "number": 4,
+    "title": "[DISCUSSION] Github Lively integration",
+    "user": {
+      "login": "rksm",
+      "id": 467450,
+      "avatar_url": "https://2.gravatar.com/avatar/7e0fc9769fc4ec9b23b85da1639d5f31?d=https%3A%2F%2Fidenticons.github.com%2Ff5790be82a84c28f0e1fadaed4826b78.png&r=x",
+      "gravatar_id": "7e0fc9769fc4ec9b23b85da1639d5f31",
+      "url": "https://api.github.com/users/rksm",
+      "html_url": "https://github.com/rksm",
+      "followers_url": "https://api.github.com/users/rksm/followers",
+      "following_url": "https://api.github.com/users/rksm/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rksm/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rksm/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rksm/subscriptions",
+      "organizations_url": "https://api.github.com/users/rksm/orgs",
+      "repos_url": "https://api.github.com/users/rksm/repos",
+      "events_url": "https://api.github.com/users/rksm/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rksm/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/feature",
+        "name": "feature",
+        "color": "0b02e1"
+      },
+      {
+        "url": "https://api.github.com/repos/LivelyKernel/LivelyKernel/labels/discussion",
+        "name": "discussion",
+        "color": "5319e7"
+      }
+    ],
+    "state": "open",
+    "assignee": null,
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2012-02-14T00:04:09Z",
+    "updated_at": "2012-02-20T23:47:14Z",
+    "closed_at": null,
+    "pull_request": {
+      "html_url": null,
+      "diff_url": null,
+      "patch_url": null
+    },
+    "body": "@fbornhofen @lauritzthamsen \r\n\r\nSo I have been thinking quite a lot about how to get our little experiment well integrated into the Lively workflow.\r\n\r\nFor now just so much that I'm *very* excited about the github API, e.g. [issues](http://developer.github.com/v3/issues/) and [repos](http://developer.github.com/v3/repos/downloads/).\r\n\r\nHow about creating a little entry in the world menu that says \"report a bug\" that will then automatically create a github issue? Maybe also when a red error message pops up. We can have this links/button in alerts that could automatically be used for the description...!\r\n\r\nWith trac this is a real pain but this seems to be much nicer... anyone volunteering?"
   }
 ]
