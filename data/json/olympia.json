@@ -1,0 +1,146 @@
+{
+  "headline": "Wintersportverbände",
+  "tabs":   {
+    "start": "Ct0",
+    "defaultCountID": ""
+  },
+  "gdata":   [
+        {
+      "id": "sportler",
+      "catName": "Vereinssportler",
+      "catNameShort": "Sportler",
+      "catNameInfo": "Mitglieder der Verbände laut der jüngsten Auswertung des DOSB",
+      "catNameShortSingle": "Sportler"
+    },
+        {
+      "id": "tv",
+      "catName": "TV-Reichweite 2010 (in Mio.)",
+      "catNameShort": "Mio. Zuschauer",
+      "catNameInfo": "Kumulierte TV-Reichweiten bei den Olympischen Spielen 2010. Zuschauer (in Millionen) im deutschen Free-TV (Summe aus Live-Übertragungen, Zusammenfassungen, Wiederholungen bei ARD, ZDF und Eurosport)",
+      "catNameShortSingle": "Mio. Zuschauer"
+    },
+        {
+      "id": "euro",
+      "catName": "Fördergelder 2013 in Euro",
+      "catNameShort": "Euro",
+      "catNameInfo": "Gesamtfördersumme im Jahr 2013, umfasst die Förderung der Verbände durch das Bundesinnenministerium (BMI)",
+      "catNameShortSingle": "Euro"
+    },
+        {
+      "id": "medals",
+      "catName": "Medaillen bei Olympia 2010",
+      "catNameShort": "Medaillen",
+      "catNameInfo": "Summe aller Medaillen bei den Olympischen Spielen 2010",
+      "catNameShortSingle": "Medaille"
+    },
+        {
+      "id": "quotient",
+      "catName": "Quotient",
+      "catNameShort": "Quotient",
+      "catNameInfo": "Quotient",
+      "catNameSingle": "Quotient"
+    }
+  ],
+  "opt":   {
+    "id": "varList",
+    "categories": "tv,sportler,medals,euro,gold,silver,bronze",
+    "quotientuihelp": "Wählen Sie hier zwei Datenkategorien aus:",
+    "instructions1": "<p><b>So bedienen Sie diese Grafik<\/b><\/p>\n<p>Die unteren vier Zeilen der Infografik zeigen Förderung, Medaillen, Vereinssportler und TV-Reichweite im einfachen Vergleich für jeden Verband.<\/p>\n<p>Klicken Sie auf zwei Kreise in der obersten Zeile, um zwei dieser Werte zueinander ins Verhältnis zu setzen. Wie viele Euro Förderung auf jede Medaille entfallen, erfahren Sie zum Beispiel, indem Sie die Symbole für diese Werte ganz oben in der Grafik auswählen.<\/p>\n<p>Auf diese Weise sind viele verschiedene Gedankenspiele möglich, die in der Infografik direkt unterhalb der Namen der Verbände als unterschiedlich große Kreise auftauchen. Wählen Sie andere Kreise in der obersten Zeile aus, um eine neue Berechnung auszuprobieren.<\/p>\n<p>Mit den Pfeilsymbolen am linken Rand der Infografik können Sie das Diagramm in sich sortieren. Sie sehen dann auf einen Blick, welcher Verband den höchsten und welcher den niedrigsten Wert in einer bestimmten Kategorie hat.<\/p>"
+  },
+  "daten": [  {
+    "id": "daten",
+    "s":     [
+            {
+        "id": "0",
+        "key": "ski",
+        "name": "Deutscher Skiverband",
+        "shortname": "Ski",
+        "bronze": "3",
+        "silver": "6",
+        "gold": "6",
+        "tv": "445,29",
+        "medals": "15",
+        "sportler": "566713",
+        "euro": "700000"
+      },
+            {
+        "id": "1",
+        "key": "snowboard",
+        "name": "Snowboard Verband Deutschland",
+        "shortname": "Snowboard",
+        "bronze": "0",
+        "silver": "0",
+        "gold": "0",
+        "tv": "19,26",
+        "medals": "0",
+        "sportler": "39480",
+        "euro": "1006500"
+      },
+            {
+        "id": "2",
+        "key": "bob",
+        "name": "Bob- und Schlittenverband für Deutschland",
+        "shortname": "Bob & Schlitten",
+        "bronze": "3",
+        "silver": "4",
+        "gold": "3",
+        "tv": "73,59",
+        "medals": "10",
+        "sportler": "6201",
+        "euro": "3165767"
+      },
+            {
+        "id": "3",
+        "key": "curling",
+        "name": "Deutscher Curling-Verband",
+        "shortname": "Curling",
+        "bronze": "0",
+        "silver": "0",
+        "gold": "0",
+        "tv": "55,74",
+        "medals": "0",
+        "sportler": "751",
+        "euro": "284950"
+      },
+            {
+        "id": "4",
+        "key": "eishockey",
+        "name": "Deutscher Eishockey-Bund",
+        "shortname": "Eishockey",
+        "bronze": "0",
+        "silver": "0",
+        "gold": "0",
+        "tv": "50,75",
+        "medals": "0",
+        "sportler": "27391",
+        "euro": "481000"
+      },
+            {
+        "id": "5",
+        "key": "eisschnelllauf",
+        "name": "Deutsche Eisschnelllauf-Gemeinschaft",
+        "shortname": "Eisschnelllauf",
+        "bronze": "0",
+        "silver": "3",
+        "gold": "1",
+        "tv": "78,9",
+        "medals": "4",
+        "sportler": "1561",
+        "euro": "1830000"
+      },
+            {
+        "id": "6",
+        "key": "eislauf",
+        "name": "Deutsche Eislauf-Union",
+        "shortname": "Eislauf",
+        "bronze": "1",
+        "silver": "0",
+        "gold": "0",
+        "tv": "18,53",
+        "medals": "1",
+        "sportler": "19135",
+        "euro": "673331"
+      }
+    ]
+  }]
+}
